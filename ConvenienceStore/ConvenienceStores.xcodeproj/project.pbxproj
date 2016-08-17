@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B571324BC6A450807E5AE0E /* libPods-ConvenienceStores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF7DD07B069CBA23118BDA /* libPods-ConvenienceStores.a */; };
 		AD4DCAA51D646187003A4210 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4DCAA41D646187003A4210 /* main.m */; };
 		AD4DCAA81D646187003A4210 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4DCAA71D646187003A4210 /* AppDelegate.m */; };
 		AD4DCAAB1D646187003A4210 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4DCAAA1D646187003A4210 /* ViewController.m */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02DF7DD07B069CBA23118BDA /* libPods-ConvenienceStores.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConvenienceStores.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4DCAA01D646187003A4210 /* ConvenienceStores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConvenienceStores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4DCAA41D646187003A4210 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AD4DCAA61D646187003A4210 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		AD4DCAAF1D646187003A4210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD4DCAB21D646187003A4210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD4DCAB41D646187003A4210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9CB8C22BE955312BE474E70 /* Pods-ConvenienceStores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvenienceStores.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConvenienceStores/Pods-ConvenienceStores.debug.xcconfig"; sourceTree = "<group>"; };
+		EC8A40FD02C49AB9C2D5D32D /* Pods-ConvenienceStores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvenienceStores.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConvenienceStores/Pods-ConvenienceStores.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B571324BC6A450807E5AE0E /* libPods-ConvenienceStores.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				AD4DCAA21D646187003A4210 /* ConvenienceStores */,
 				AD4DCAA11D646187003A4210 /* Products */,
+				EA77449265B9289763AD08CE /* Pods */,
+				C9E98A84EE11A744F88237AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C9E98A84EE11A744F88237AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02DF7DD07B069CBA23118BDA /* libPods-ConvenienceStores.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA77449265B9289763AD08CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9CB8C22BE955312BE474E70 /* Pods-ConvenienceStores.debug.xcconfig */,
+				EC8A40FD02C49AB9C2D5D32D /* Pods-ConvenienceStores.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD4DCAB71D646187003A4210 /* Build configuration list for PBXNativeTarget "ConvenienceStores" */;
 			buildPhases = (
+				A5E4056F8CD994FB474F4AFD /* 📦 Check Pods Manifest.lock */,
 				AD4DCA9C1D646187003A4210 /* Sources */,
 				AD4DCA9D1D646187003A4210 /* Frameworks */,
 				AD4DCA9E1D646187003A4210 /* Resources */,
+				69468731CDE99F60E89E9F12 /* 📦 Embed Pods Frameworks */,
+				5742581045582CCB8AF49D64 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,6 +170,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5742581045582CCB8AF49D64 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConvenienceStores/Pods-ConvenienceStores-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69468731CDE99F60E89E9F12 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConvenienceStores/Pods-ConvenienceStores-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5E4056F8CD994FB474F4AFD /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AD4DCA9C1D646187003A4210 /* Sources */ = {
@@ -259,6 +334,7 @@
 		};
 		AD4DCAB81D646187003A4210 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9CB8C22BE955312BE474E70 /* Pods-ConvenienceStores.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ConvenienceStores/Info.plist;
@@ -272,6 +348,7 @@
 		};
 		AD4DCAB91D646187003A4210 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC8A40FD02C49AB9C2D5D32D /* Pods-ConvenienceStores.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ConvenienceStores/Info.plist;
@@ -302,6 +379,7 @@
 				AD4DCAB91D646187003A4210 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
