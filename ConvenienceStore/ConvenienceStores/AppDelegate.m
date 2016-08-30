@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "RootViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    ViewController *Viewc = [[ViewController alloc] init];
+    RootViewController *Viewc = [[RootViewController alloc] init];
     _window.rootViewController = Viewc;
     [_window makeKeyAndVisible];
     return YES;
