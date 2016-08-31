@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GroupBuyViewController : UIViewController
+@interface GroupBuyViewController : BaseViewController
 
 @end

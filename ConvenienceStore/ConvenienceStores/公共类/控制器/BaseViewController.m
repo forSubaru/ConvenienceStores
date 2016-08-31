@@ -1,0 +1,146 @@
+//
+//  BaseViewController.m
+//  ConvenienceStores
+//
+//  Created by 王子豪 on 16/8/30.
+//  Copyright © 2016年 王子豪. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface BaseViewController ()
+
+/**左上角扫一扫*/
+@property (nonatomic,strong) UIButton *scanBtn;
+/**右上角客服*/
+@property (nonatomic,strong) UIButton *customerServiceBtn;
+/**搜索栏*/
+@property (nonatomic,strong) SearchView *searchView;
+/**标题*/
+@property (nonatomic,strong) UILabel *titleLabel;
+/**返回按钮*/
+@property (nonatomic,strong) UIButton *backBtn;
+/**右上角三个点*/
+@property (nonatomic,strong) UIButton *pointBtn;
+/**超市有位置标题*/
+@property (nonatomic,strong) UIButton *positonNameBtn;
+
+
+
+
+
+@end
+
+@implementation BaseViewController
+//无标题的VC
+- (instancetype)initWithHeaderType:(HeaderType)headerType
+{
+    self = [super init];
+    if (self) {
+        if (headerType == HeaderTypeHomeVc) {
+            [self.backView addSubview:self.scanBtn];
+            [self.backView addSubview:self.customerServiceBtn];
+            [self.backView addSubview:self.searchView];
+        }else if (headerType == HeaderTypeSupermaket){
+            [self.backView addSubview:self.backBtn];
+            [self.backView addSubview:self.positonNameBtn];
+            [self.backView addSubview:self.customerServiceBtn];
+            
+        }
+        
+    }
+    return self;
+}
+//带标题的VC
+-(instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title{
+    
+    self = [super init];
+    if (self) {
+        
+        [self.backView addSubview:self.backBtn];
+        [self.backView addSubview:self.titleLabel];
+        
+        if (headerType == HeaderTypeOnlyBack) {
+            
+        }else if (headerType == HeaderTypeBackAndThreePoint){
+            self.titleLabel.text = title;
+            [self.backView addSubview:self.pointBtn];
+        }
+        
+    }
+    return self;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:self.backView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark *** getters ***
+
+-(UIView *)backView{
+    if (!_backView) {
+        _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, Screen_width, 44)];
+        _backView.backgroundColor = LH_RGBCOLOR(251, 201, 9);
+    }
+    return _backView;
+}
+-(UIButton *)scanBtn{
+    if (!_scanBtn) {
+        _scanBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [_scanBtn setImage:MImage(@"code") forState:UIControlStateNormal];
+    }
+    return _scanBtn;
+}
+-(UIButton *)customerServiceBtn{
+    if (!_customerServiceBtn) {
+        _customerServiceBtn = [[UIButton alloc] initWithFrame:CGRectMake(Screen_width-44, 0, 44, 44)];
+        [_customerServiceBtn setImage:MImage(@"news") forState:UIControlStateNormal];
+    }
+    return _customerServiceBtn;
+}
+-(SearchView *)searchView{
+    if (!_searchView) {
+        _searchView = [[SearchView alloc] initWithFrame:CGRectMake(0, 0, 420*AdaptationWidth(), 50*AdaptationWidth())];
+        _searchView.center = CGPointMake(self.backView.center.x, self.backView.center.y-20);
+        
+    }
+    return _searchView;
+}
+-(UILabel *)titleLabel{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300*AdaptationWidth(), self.backView.bounds.size.height)];
+        _titleLabel.center = CGPointMake(self.backView.center.x, _titleLabel.center.y);
+        _titleLabel.textAlignment = 1;
+        _titleLabel.font = WFont(35);
+        _titleLabel.text = @"标题文字的的";
+    }
+    return _titleLabel;
+}
+-(UIButton *)backBtn{
+    if (!_backBtn) {
+        _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [_backBtn setImage:MImage(@"return") forState:UIControlStateNormal];
+        
+    }
+    return _backBtn;
+}
+-(UIButton *)positonNameBtn{
+    if (!_positonNameBtn) {
+        _positonNameBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300*AdaptationWidth(), self.backView.bounds.size.height)];
+        _positonNameBtn.center = CGPointMake(self.backView.center.x, _positonNameBtn.center.y);
+        [_positonNameBtn setImage:MImage(@"place") forState:UIControlStateNormal];
+        [_positonNameBtn setTitle:@"命运石之门" forState:UIControlStateNormal];
+        [_positonNameBtn setTitleColor:LH_RGBCOLOR(61, 10, 7) forState:UIControlStateNormal];
+        _positonNameBtn.titleLabel.font = WFont(35);
+        _positonNameBtn.titleLabel.textAlignment = 1;
+        
+    }
+    return _positonNameBtn;
+}
+@end

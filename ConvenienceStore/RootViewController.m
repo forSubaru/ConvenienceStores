@@ -56,9 +56,9 @@
 }
 
 -(void)configViewController{
-    HomeViewController *homeVc = [[HomeViewController alloc] init];
-    GoodsTypeViewController *goodVc = [[GoodsTypeViewController alloc] init];
-    GroupBuyViewController *groupVc = [[GroupBuyViewController alloc] init];
+    HomeViewController *homeVc = [[HomeViewController alloc] initWithHeaderType:HeaderTypeHomeVc];
+    GoodsTypeViewController *goodVc = [[GoodsTypeViewController alloc] initWithHeaderType:HeaderTypeSupermaket];
+    GroupBuyViewController *groupVc = [[GroupBuyViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"团购"];
     ShopCartViewController *cartVc = [[ShopCartViewController alloc] init];
     MineViewController *minVc = [[MineViewController alloc] init];
     
@@ -67,7 +67,7 @@
     [viewControllers enumerateObjectsUsingBlock:^(UIViewController *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UINavigationController *naviCon = [[UINavigationController alloc] initWithRootViewController:obj];
         naviCon.title = _viewControllersTitles[idx];
-        obj.view.backgroundColor = LH_RandomColor;
+        
         obj.navigationController.navigationBar.hidden = true;
         [naviArrs addObject:naviCon];
         
@@ -105,7 +105,7 @@
         
         btn.adjustsImageWhenHighlighted = NO;
         [btn setImage:[UIImage imageNamed:_barImageArr[i]] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:_barSelectedImageArr[i]] forState:UIControlStateFocused];
+        [btn setImage:[UIImage imageNamed:_barSelectedImageArr[i]] forState:UIControlStateSelected];
         
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView.frame.size.width, -btn.imageView.frame.size.height, 0);
 
@@ -118,7 +118,17 @@
 #pragma mark *** BtnEvents ***
 
 -(void)respondsToItemBtn:(UIButton *)sender{
-    sender.backgroundColor = [UIColor orangeColor];
+    NSLog(@"dianjide--%ld", sender.tag);
+    
+    for (UIButton *btn in self.tabBar.subviews) {
+        if(btn.tag>=TabBarBtn_tag&&btn.tag<=TabBarBtn_tag+5){
+            if (btn.tag == sender.tag) {
+                sender.selected = true;
+            }else{
+                btn.selected = false;
+            }
+        }
+    }
     
     self.selectedIndex = sender.tag-TabBarBtn_tag;
 }

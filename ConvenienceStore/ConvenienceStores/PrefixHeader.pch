@@ -13,7 +13,13 @@
 #import "Custom.h"
 #import "ScreenAdaptation.h"
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-
+//公共view
+#import "BaseViewController.h"
+#import "SearchView.h"
+#import "ScrollerView.h"
+#import "CommonCollectionViewCell.h"
+//三方
+#import <YYKit.h>
+#import <UIView+SDAutoLayout.h>
+#import <MBProgressHUD.h>
 #endif /* PrefixHeader_pch */

@@ -31,9 +31,7 @@ NSString * _Nonnull const kImageWithPersonalCenterVc = @"user";
 NSString * _Nonnull const kSelectedImageWithHomeVc = @"home_color";
 NSString * _Nonnull const kSelectedImageWithGoodsTypeVc = @"fenlei_color";
 NSString * _Nonnull const kSelectedImageWithGroupBuyVc = @"group_color";
-
 NSString * _Nonnull const kSelectedImageWithShopCartVc = @"car_color";
-
 NSString * _Nonnull const kSelectedImageWithPersonalCenterVc = @"user_color";
 
 #pragma mark *** 网络请求requestcode ***
@@ -64,7 +62,6 @@ NSString * _Nonnull const kRequestCodeLogin = @"login";
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         complete(false);
     }]];
-    
     [target presentViewController:alert animated:YES completion:nil];
 
 }

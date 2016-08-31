@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ConvenienceStores.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDAutoLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>209AD69FC7691A7C041AB65020FF952E</key>
+		<key>02C521BCCD25E566304003986539AACD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CF687A776904003BF817E66201262A5</key>
+		<key>88C4A874286C7A544274EB524668E294</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>928353533005A4198EBDA5B700D37B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A0D3853D738C2E80BBC3F6A392E045D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC0EFFE40D2F88A01C89A979CDEBF514</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
