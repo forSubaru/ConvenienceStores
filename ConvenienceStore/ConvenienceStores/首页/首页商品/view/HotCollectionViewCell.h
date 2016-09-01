@@ -14,5 +14,5 @@
 /**名字*/
 @property (nonatomic,strong) UILabel *cellName;
 /**价格*/
-@property (nonatomic,strong) UILabel *cellPrice;
+@property (nonatomic,strong) RedPriceLabel *cellPrice;
 @end

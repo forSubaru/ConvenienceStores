@@ -21,7 +21,12 @@
 }
 #pragma mark *** events ***
 -(void)respondsToItemBtn:(UIButton *)sender{
-    NSLog(@"%@", sender.titleLabel.text);
+    
+    NSString *title = sender.titleLabel.text;
+    if (_delegate && [_delegate respondsToSelector:@selector(FourButtonView:didTapItemForTitle:)]) {
+        [_delegate FourButtonView:self didTapItemForTitle:title];
+    };
+    
 }
 #pragma mark *** 初始化界面 ***
 -(void)initUI{

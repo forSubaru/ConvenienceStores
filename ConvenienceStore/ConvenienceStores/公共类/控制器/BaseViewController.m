@@ -81,6 +81,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark *** events ***
+-(void)respondsToReturnBtn:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:true];
+}
 #pragma mark *** getters ***
 
 -(UIView *)backView{
@@ -126,6 +130,7 @@
     if (!_backBtn) {
         _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [_backBtn setImage:MImage(@"return") forState:UIControlStateNormal];
+        [_backBtn addTarget:self action:@selector(respondsToReturnBtn:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _backBtn;
@@ -142,5 +147,12 @@
         
     }
     return _positonNameBtn;
+}
+-(UIButton *)pointBtn{
+    if (!_pointBtn) {
+        _pointBtn = [[UIButton alloc] initWithFrame:CGRectMake(Screen_width-44, 0, 44, 44)];
+        [_pointBtn setImage:MImage(@"news") forState:UIControlStateNormal];
+    }
+    return _pointBtn;
 }
 @end

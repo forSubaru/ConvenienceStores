@@ -38,14 +38,12 @@
     }
     return _cellName;
 }
--(UILabel *)cellPrice{
+-(RedPriceLabel *)cellPrice{
     if (!_cellPrice) {
-        _cellPrice = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectYH(self.cellName), self.bounds.size.width, 44*AdaptationWidth())];
-        _cellPrice.font = WFont(25);
-        _cellPrice.textColor = [UIColor redColor];
-        _cellPrice.textAlignment = 1;
-        _cellPrice.text = @"$88.8";
+        _cellPrice = [[RedPriceLabel alloc] initWithFrame:CGRectMake(0, CGRectYH(self.cellName), self.bounds.size.width, 44*AdaptationWidth()) string:@"88.0" priceLabeltype:PriceLabelTypeRedSmallLetterAndNumber];
+
     }
     return _cellPrice;
 }
+
 @end

@@ -17,7 +17,7 @@
 #import "BaseViewController.h"
 #import "SearchView.h"
 #import "ScrollerView.h"
-#import "CommonCollectionViewCell.h"
+#import "RedPriceLabel.h"
 //三方
 #import <YYKit.h>
 #import <UIView+SDAutoLayout.h>

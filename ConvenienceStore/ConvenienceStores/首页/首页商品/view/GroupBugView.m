@@ -40,18 +40,22 @@ static NSString *const kReusablecollecCellIdentifier = @"kReusablecollecCellIden
     return headerView;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", indexPath.row);
+    if (_delegate && [_delegate respondsToSelector:@selector(GroupBuyView:didSeletedItem:)]) {
+        [_delegate GroupBuyView:self didSeletedItem:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    };
 }
 #pragma mark *** events ***
 -(void)respondsToMoreBtn:(UIButton *)sender{
-    NSLog(@"%@", sender.titleLabel.text);
+    if (_delegate && [_delegate respondsToSelector:@selector(GroupBuyViewDidTapMoreButton)]) {
+        [_delegate GroupBuyViewDidTapMoreButton];
+    };
 }
 #pragma mark *** getters ***
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLay = [[UICollectionViewFlowLayout alloc] init];
         flowLay.minimumLineSpacing = 0;
-        flowLay.itemSize = CGSizeMake(Screen_width/3, 322*AdaptationWidth());
+        flowLay.itemSize = CGSizeMake(Screen_width/3, 321*AdaptationWidth());
         flowLay.minimumInteritemSpacing = 0;
         flowLay.headerReferenceSize = CGSizeMake(Screen_width, 30);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLay];

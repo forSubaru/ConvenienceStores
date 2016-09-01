@@ -10,7 +10,8 @@
 #import "FourButtonView.h"
 #import "HotCollectionView.h"
 #import "GroupBugView.h"
-@interface HomeViewController ()
+#import "SeckillViewController.h"
+@interface HomeViewController ()<FourButtonViewDelegate,HotCollectionViewDelegate,GroupBugViewDelegate>
 /**背景滚动图*/
 @property (nonatomic,strong) UIScrollView *backScroView;
 
@@ -24,10 +25,6 @@
 @property (nonatomic,strong) GroupBugView *groupView;
 /**查看更多商品按钮*/
 @property (nonatomic,strong) UIButton *moreGoodsBtn;
-
-
-
-
 
 @end
 
@@ -56,6 +53,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark *** viewsDelegate ***
+-(void)FourButtonView:(FourButtonView *)fourView didTapItemForTitle:(NSString *)title{
+    NSLog(@"%@", title);
+}
+-(void)HotColletionView:(HotCollectionView *)hotView selectedItem:(NSString *)itemID{
+    NSLog(@"%@", itemID);
+}
+-(void)HotColletionViewTapMoreButton{
+    NSLog(@"秒杀更多");
+    SeckillViewController *killView = [[SeckillViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"秒杀"];
+    [self.navigationController pushViewController:killView animated:YES];
+}
+-(void)GroupBuyView:(GroupBugView *)groupView didSeletedItem:(NSString *)itemId{
+    NSLog(@"%@", itemId);
+}
+-(void)GroupBuyViewDidTapMoreButton{
+    NSLog(@"团购更多");
+}
 #pragma mark *** Events ***
 -(void)respondsToMoreGoodsBtn:(UIButton *)sender{
     NSLog(@"%@", sender.titleLabel.text);
@@ -75,13 +90,13 @@
 -(ScrollerView *)homeScrollView{
     if (!_homeScrollView) {
         _homeScrollView = [[ScrollerView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 300*AdaptationWidth()) images:[@[@"gundong",@"gundong2",@"gundong3",@"gundong4"] mutableCopy]];
-        
     }
     return _homeScrollView;
 }
 -(FourButtonView *)fourBtnView{
     if (!_fourBtnView) {
         _fourBtnView = [[FourButtonView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.homeScrollView), Screen_width, 180*AdaptationWidth())];
+        _fourBtnView.delegate = self;
     }
     return _fourBtnView;
 }
@@ -89,13 +104,15 @@
     if (!_hotCollectionView) {
         _hotCollectionView = [[HotCollectionView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.fourBtnView)+5, Screen_width, 315*AdaptationWidth())];
         _hotCollectionView.backgroundColor = LH_RandomColor;
+        _hotCollectionView.delegate = self;
     }
     return _hotCollectionView;
 }
 -(GroupBugView *)groupView{
     if (!_groupView) {
-        _groupView = [[GroupBugView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.hotCollectionView)+5, Screen_width, 714*AdaptationWidth())];
+        _groupView = [[GroupBugView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.hotCollectionView)+5, Screen_width, 702*AdaptationWidth())];
         _groupView.backgroundColor = LH_RandomColor;
+        _groupView.delegate = self;
     }
     return _groupView;
 }

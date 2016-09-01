@@ -21,7 +21,9 @@
         self.cellName.frame = CGRectMake(5, CGRectYH(self.cellImage), self.bounds.size.width, 30*AdaptationWidth());
         [self.contentView addSubview:self.cellScaleLabel];
         self.cellPrice.frame = CGRectMake(5, CGRectYH(self.cellScaleLabel), self.bounds.size.width, 44*AdaptationWidth());
-        self.cellPrice.textAlignment = 0;
+        
+        self.cellPrice.letter.frame = CGRectMake(0*AdaptationWidth(), -5, 5, self.cellPrice.bounds.size.height);
+        self.cellPrice.price.frame = CGRectMake(CGRectXW(self.cellPrice.letter), -5, 40, self.cellPrice.bounds.size.height);
 
         
     }

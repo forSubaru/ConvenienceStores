@@ -8,7 +8,6 @@
 
 #import "HotCollectionView.h"
 #import "HotCollectionViewCell.h"
-#import "HotCollectionReusableView.h"
 static NSString *const kReusableCoelcCellIdentifier = @"kReusableCoelcCellIdentifier";
 static NSString *const kReusableheaderIdentifier = @"kReusableheaderIdentifier";
 
@@ -54,11 +53,15 @@ static NSString *const kReusableheaderIdentifier = @"kReusableheaderIdentifier";
 
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", indexPath.row);
+    if (_delegate && [_delegate respondsToSelector:@selector(HotColletionView:selectedItem:)]) {
+        [_delegate HotColletionView:self selectedItem:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    };
 }
 #pragma mark ***  ***
 -(void)respondsToMoreBtn:(UIButton *)sender{
-    NSLog(@"%@", sender.titleLabel.text);
+    if (_delegate && [_delegate respondsToSelector:@selector(HotColletionViewTapMoreButton)]) {
+        [_delegate HotColletionViewTapMoreButton];
+    };
 }
 #pragma mark *** getters ***
 -(UICollectionView *)collectionView{
@@ -70,6 +73,7 @@ static NSString *const kReusableheaderIdentifier = @"kReusableheaderIdentifier";
         flowLay.minimumInteritemSpacing = 0;
         flowLay.headerReferenceSize = CGSizeMake(Screen_width, 30);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLay];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
         _collectionView.delegate =self;
         _collectionView.bounces = false;

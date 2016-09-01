@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GroupBugView;
+@protocol GroupBugViewDelegate <NSObject>
 
+-(void)GroupBuyView:(GroupBugView *)groupView didSeletedItem:(NSString *)itemId;
+-(void)GroupBuyViewDidTapMoreButton;
+
+@end
 @interface GroupBugView : UIView<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate>
 /**jihe*/
 @property (nonatomic,strong) UICollectionView *collectionView;
@@ -15,4 +21,6 @@
 @property (nonatomic,strong) UIButton *hotBtn;
 /**更多按钮*/
 @property (nonatomic,strong) UIButton *moreBtn;
+@property (nonatomic,weak) id<GroupBugViewDelegate> delegate; /*代理人*/
+
 @end

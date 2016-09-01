@@ -140,7 +140,6 @@
         _scrollView.bounces = NO;
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
-        
     }
     return _scrollView;
 }
@@ -157,8 +156,6 @@
     if (!_centerImage) {
         _centerImage = [[UIImageView alloc] initWithFrame:CGRectMake(SelfView_width, 0, SelfView_width, SelfView_height)];
         _centerImage.backgroundColor = [UIColor clearColor];
-        
-        
     }
     return _centerImage;
 }
@@ -173,7 +170,7 @@
 -(UIPageControl *)pageContro{
     if (!_pageContro) {
         _pageContro = [[UIPageControl alloc] init];
-        _pageContro.bounds = CGRectMake(0, 0, SelfView_width, 30);
+        _pageContro.bounds = CGRectMake(0, 0, SelfView_width, 20);
         _pageContro.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(self.scrollView.frame)-CGRectGetMidY(_pageContro.bounds));
         
     }
