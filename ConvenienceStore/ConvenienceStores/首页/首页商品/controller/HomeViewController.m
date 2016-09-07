@@ -35,6 +35,7 @@
     [self initData];
     [self initUI];
 }
+
 #pragma mark *** 初始化数据 ***
 -(void)initData{
     
@@ -59,6 +60,8 @@
 }
 -(void)HotColletionView:(HotCollectionView *)hotView selectedItem:(NSString *)itemID{
     NSLog(@"%@", itemID);
+    GoodsDetailViewController *detaiVc = [[GoodsDetailViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"商品详情" GoodsDetailType:GoodsDetailTypeNormal];
+    [self.navigationController pushViewController:detaiVc animated:true];
 }
 -(void)HotColletionViewTapMoreButton{
     NSLog(@"秒杀更多");
@@ -67,6 +70,8 @@
 }
 -(void)GroupBuyView:(GroupBugView *)groupView didSeletedItem:(NSString *)itemId{
     NSLog(@"%@", itemId);
+    GoodsDetailViewController *detaiVc = [[GoodsDetailViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"商品详情" GoodsDetailType:GoodsDetailTypeNormal];
+    [self.navigationController pushViewController:detaiVc animated:true];
 }
 -(void)GroupBuyViewDidTapMoreButton{
     NSLog(@"团购更多");

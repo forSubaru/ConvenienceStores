@@ -30,6 +30,7 @@
 @implementation RootViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self initData];
     [self configViewController];
@@ -113,6 +114,9 @@
         
         //添加按钮
         [self.tabBar addSubview:btn];
+        if(i==0){
+            btn.selected = true;
+        }
     }
 }
 #pragma mark *** BtnEvents ***
@@ -129,7 +133,6 @@
             }
         }
     }
-    
     self.selectedIndex = sender.tag-TabBarBtn_tag;
 }
 

@@ -13,11 +13,13 @@
 #import "Custom.h"
 #import "ScreenAdaptation.h"
 
-//公共view
+//公共lei
 #import "BaseViewController.h"
+#import "GoodsDetailViewController.h"
 #import "SearchView.h"
 #import "ScrollerView.h"
 #import "RedPriceLabel.h"
+
 //三方
 #import <YYKit.h>
 #import <UIView+SDAutoLayout.h>

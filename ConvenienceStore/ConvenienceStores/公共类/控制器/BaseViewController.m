@@ -24,6 +24,9 @@
 @property (nonatomic,strong) UIButton *pointBtn;
 /**超市有位置标题*/
 @property (nonatomic,strong) UIButton *positonNameBtn;
+/**搜索*/
+@property (nonatomic,strong) UIButton *searchBtn;
+
 
 
 
@@ -42,7 +45,7 @@
             [self.backView addSubview:self.customerServiceBtn];
             [self.backView addSubview:self.searchView];
         }else if (headerType == HeaderTypeSupermaket){
-            [self.backView addSubview:self.backBtn];
+            [self.backView addSubview:self.searchBtn];
             [self.backView addSubview:self.positonNameBtn];
             [self.backView addSubview:self.customerServiceBtn];
             
@@ -56,7 +59,9 @@
     
     self = [super init];
     if (self) {
-        
+        UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 20)];
+        blackView.backgroundColor = [UIColor blackColor];
+                [self.view addSubview:blackView];
         [self.backView addSubview:self.backBtn];
         [self.backView addSubview:self.titleLabel];
         
@@ -89,6 +94,7 @@
 
 -(UIView *)backView{
     if (!_backView) {
+        
         _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, Screen_width, 44)];
         _backView.backgroundColor = LH_RGBCOLOR(251, 201, 9);
     }
@@ -131,7 +137,6 @@
         _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [_backBtn setImage:MImage(@"return") forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(respondsToReturnBtn:) forControlEvents:UIControlEventTouchUpInside];
-        
     }
     return _backBtn;
 }
@@ -144,7 +149,6 @@
         [_positonNameBtn setTitleColor:LH_RGBCOLOR(61, 10, 7) forState:UIControlStateNormal];
         _positonNameBtn.titleLabel.font = WFont(35);
         _positonNameBtn.titleLabel.textAlignment = 1;
-        
     }
     return _positonNameBtn;
 }
@@ -154,5 +158,12 @@
         [_pointBtn setImage:MImage(@"news") forState:UIControlStateNormal];
     }
     return _pointBtn;
+}
+-(UIButton *)searchBtn{
+    if (!_searchBtn) {
+        _searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [_searchBtn setImage:MImage(@"find") forState:UIControlStateNormal];
+    }
+    return _searchBtn;
 }
 @end
