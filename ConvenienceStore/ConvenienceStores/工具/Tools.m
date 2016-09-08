@@ -37,7 +37,7 @@ NSString * _Nonnull const kSelectedImageWithPersonalCenterVc = @"user_color";
 #pragma mark *** 网络请求requestcode ***
 //登录
 NSString * _Nonnull const kRequestCodeLogin = @"login";
-
+NSString * _Nonnull const kNotificationRootTabbar = @"kNotificationRootTabbar";
 
 +(void)showAlertViewControllerAutoDissmissWithTarGet:(id)target
                                              Message:(NSString *)message

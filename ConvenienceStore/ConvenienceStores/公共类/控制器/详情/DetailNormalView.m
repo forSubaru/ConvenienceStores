@@ -9,7 +9,6 @@
 #import "DetailNormalView.h"
 @interface DetailNormalView()
 
-
 @end
 @implementation DetailNormalView
 

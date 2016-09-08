@@ -16,8 +16,11 @@ typedef enum : NSUInteger {
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
+/**最顶黑色背景*/
+@property (nonatomic,strong) UIView *topBlackView;
 /**黄色背景*/
 @property (nonatomic,strong) UIView *backView;
+
 //首页VC
 - (instancetype)initWithHeaderType:(HeaderType)headerType;
 

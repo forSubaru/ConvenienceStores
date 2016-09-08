@@ -36,6 +36,8 @@ UIKIT_EXTERN NSString * _Nonnull const kSelectedImageWithPersonalCenterVc;
 
 #pragma mark *** 网络请求requestCode ***
 UIKIT_EXTERN NSString * _Nonnull const kRequestCodeLogin;
+#pragma mark *** 通知 ***
+UIKIT_EXTERN NSString * _Nonnull const kNotificationRootTabbar;
 
 /**
  *  弹出框自动消失

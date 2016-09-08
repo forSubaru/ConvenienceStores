@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DetailGroupView : UIView
+#import "DetailNormalView.h"
+@interface DetailGroupView : DetailNormalView
 
 @end

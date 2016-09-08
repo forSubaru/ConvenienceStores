@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopBarButton.h"
 @class SecondPageTopBar;
 @protocol SecondPageTopBarDelegate <NSObject>
 
@@ -26,6 +25,6 @@
  */
 -(instancetype)initWithArray:(NSArray*)array;
 -(void)AddTarBarBtn:(NSString *)name;//添加顶部标题项的名字
--(void)TabBtnClick:(TopBarButton *)sender;//监听tabbar的点击
+-(void)TabBtnClick:(UIButton *)sender;//监听tabbar的点击
 
 @end

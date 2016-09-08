@@ -30,8 +30,6 @@
 
 
 
-
-
 @end
 
 @implementation BaseViewController
@@ -62,6 +60,7 @@
         UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 20)];
         blackView.backgroundColor = [UIColor blackColor];
                 [self.view addSubview:blackView];
+        self.topBlackView = blackView;
         [self.backView addSubview:self.backBtn];
         [self.backView addSubview:self.titleLabel];
         

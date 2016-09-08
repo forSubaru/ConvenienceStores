@@ -11,6 +11,7 @@
 #import "HotCollectionView.h"
 #import "GroupBugView.h"
 #import "SeckillViewController.h"
+#import "RootViewController.h"
 @interface HomeViewController ()<FourButtonViewDelegate,HotCollectionViewDelegate,GroupBugViewDelegate>
 /**背景滚动图*/
 @property (nonatomic,strong) UIScrollView *backScroView;
@@ -57,6 +58,11 @@
 #pragma mark *** viewsDelegate ***
 -(void)FourButtonView:(FourButtonView *)fourView didTapItemForTitle:(NSString *)title{
     NSLog(@"%@", title);
+    if ([title isEqualToString:@"超市"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"1"}];
+    }else if ([title isEqualToString:@"团购"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"2"}];
+    }
 }
 -(void)HotColletionView:(HotCollectionView *)hotView selectedItem:(NSString *)itemID{
     NSLog(@"%@", itemID);
@@ -75,6 +81,8 @@
 }
 -(void)GroupBuyViewDidTapMoreButton{
     NSLog(@"团购更多");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"2"}];
 }
 #pragma mark *** Events ***
 -(void)respondsToMoreGoodsBtn:(UIButton *)sender{

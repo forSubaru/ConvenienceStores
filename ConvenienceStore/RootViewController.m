@@ -28,7 +28,9 @@
 @end
 
 @implementation RootViewController
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -77,8 +79,17 @@
     
     self.viewControllers = naviArrs;
     
+    [self registerNotification];
 }
-
+-(void)registerNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondsToRootTabBarNotification:) name:kNotificationRootTabbar object:nil];
+}
+-(void)respondsToRootTabBarNotification:(NSNotification *)info{
+    NSInteger index = [info.userInfo[@"index"] integerValue];
+    NSLog(@"%ld", index);
+    UIButton *goalBtn = [self.tabBar viewWithTag:TabBarBtn_tag+index];
+    [self respondsToItemBtn:goalBtn];
+}
 #pragma mark *** 自定义标签栏item ***
 -(void)initTabBarItem{
     //便利删除标签栏说有控件

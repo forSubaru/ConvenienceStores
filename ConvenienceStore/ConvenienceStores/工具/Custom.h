@@ -56,6 +56,8 @@ __block __weak __typeof(&*self)weakSelf = self;
 #define LH_RGBCOLOR(R, G, B)    [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
 #define BorderColor LH_RGBCOLOR(215, 215, 215).CGColor
 #define LH_RandomColor          LH_RGBCOLOR(arc4random_uniform(255),arc4random_uniform(255),arc4random_uniform(255))
+#define mainYellowColor LH_RGBCOLOR(243, 191, 8)
+#define mainGrayColor LH_RGBCOLOR(197, 197, 197)
 //addmethod
 #define CGRectOrigin(v)    v.frame.origin
 #define CGRectSize(v)      v.frame.size

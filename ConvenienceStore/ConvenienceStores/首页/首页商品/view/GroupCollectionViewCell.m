@@ -18,6 +18,7 @@
         self.cellName.text = @"洋河蓝色经典海";
         self.cellName.numberOfLines = 0;
         self.cellName.textAlignment = 0;
+        
         self.cellName.frame = CGRectMake(5, CGRectYH(self.cellImage), self.bounds.size.width, 30*AdaptationWidth());
         [self.contentView addSubview:self.cellScaleLabel];
         self.cellPrice.frame = CGRectMake(5, CGRectYH(self.cellScaleLabel), self.bounds.size.width, 44*AdaptationWidth());

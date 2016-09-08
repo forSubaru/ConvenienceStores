@@ -9,7 +9,7 @@
 #import "SecondPageTopBar.h"
 #define indictorH 2.0 //指示条高度
 @interface SecondPageTopBar()
-@property(nonatomic,weak) TopBarButton *lastBtn;//记录上一个按钮
+@property(nonatomic,weak) UIButton *lastBtn;//记录上一个按钮
 @property(nonatomic,weak) UIView* bottomView;//记录底部指示的标示条
 @property(nonatomic,assign)CGFloat btnW;//记录按钮的宽度
 @property(nonatomic,assign)CGFloat btnH;//记录按钮的高度
@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         UIView* bottomView = [[UIView alloc] init];
-        bottomView.backgroundColor = [UIColor orangeColor];
+        bottomView.backgroundColor = LH_RGBCOLOR(250, 221, 123);
         self.bottomView = bottomView;
         [self addSubview:bottomView];
     }
@@ -51,10 +51,10 @@
  */
 -(void)AddTarBarBtn:(NSString *)name{
     
-    TopBarButton *btn = [TopBarButton buttonWithType:UIButtonTypeCustom];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:name forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+//    [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     btn.titleLabel.font=[UIFont systemFontOfSize:16];
     [btn addTarget:self action:@selector(TabBtnClick:) forControlEvents:UIControlEventTouchDown];
     [self addSubview:btn];
@@ -74,8 +74,8 @@
     self.btnW = btnW;
     self.btnH = btnH;
     for(int i=0;i<btnCount;i++){
-        if ([self.subviews[i] isKindOfClass:[TopBarButton class]]) {
-            TopBarButton *btn = self.subviews[i];
+        if ([self.subviews[i] isKindOfClass:[UIButton class]]) {
+            UIButton *btn = self.subviews[i];
             btn.frame = CGRectMake((i-1)*btnW, 0, btnW, btnH);
         }else{
             UIView* view = self.subviews[i];
@@ -87,7 +87,7 @@
 /**
  监听tabbar的点击
  */
--(void)TabBtnClick:(TopBarButton *)sender{
+-(void)TabBtnClick:(UIButton *)sender{
     if(_lastBtn != nil){
         _lastBtn.selected = NO;
     }

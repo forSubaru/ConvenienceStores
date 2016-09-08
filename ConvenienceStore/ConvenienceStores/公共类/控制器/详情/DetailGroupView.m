@@ -10,15 +10,27 @@
 //
 
 #import "DetailGroupView.h"
+@interface DetailGroupView()
+/**背景*/
+@property (nonatomic,strong) UIImageView *backImageView;
 
+@end
 @implementation DetailGroupView
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self removeAllSubviews];
+        [self addSubview:self.backImageView];
+    }
+    return self;
 }
-*/
-
+#pragma mark *** getters ***
+-(UIImageView *)backImageView{
+    if (!_backImageView) {
+        _backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 107*AdaptationWidth())];
+        _backImageView.image = MImage(@"bg");
+    }
+    return _backImageView;
+}
 @end

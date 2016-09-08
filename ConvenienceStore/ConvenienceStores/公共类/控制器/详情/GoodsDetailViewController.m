@@ -5,11 +5,14 @@
 //  Created by 王子豪 on 16/9/5.
 //  Copyright © 2016年 王子豪. All rights reserved.
 //
-#define contenSize 650.0  //两个scrollView的contentSize大小
+#define contenSize 694.0  //两个scrollView的contentSize大小
 #define dragStrength 60.0 //拖拽强度
 
 #import "GoodsDetailViewController.h"
 #import "SecondPageTopBar.h"
+#import "AllParameterView.h"
+#import "PhotoDetailView.h"
+#import "EvaDetailView.h"
 @interface GoodsDetailViewController ()<UIScrollViewDelegate,SecondPageTopBarDelegate>
 
 @property(nonatomic,strong)UIScrollView * mainScrollView;
@@ -25,6 +28,19 @@
 @property (nonatomic,strong) DetailGroupView *groupView;
 /**继续拖动*/
 @property (nonatomic,strong) UIButton *dragBtn;
+/**加入购物车*/
+@property (nonatomic,strong) UIButton *addCartBtn;
+
+/**参数*/
+@property (nonatomic,strong) AllParameterView *parDeView;
+/**图文详情*/
+@property (nonatomic,strong) PhotoDetailView *photoDeView;
+/**评价*/
+@property (nonatomic,strong) EvaDetailView *evaDeView;
+
+
+
+
 
 @end
 
@@ -37,7 +53,8 @@
         if (type==GoodsDetailTypeNormal) {
             
         }else{
-            
+            [self.normalView removeFromSuperview];
+            [self.mainScrollView addSubview:self.groupView];
         }
     }
     return self;
@@ -46,7 +63,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = false;
     self.view.backgroundColor = [UIColor whiteColor];
-   [self initUI];
+    [self initUI];
 }
 
 
@@ -68,24 +85,20 @@
 #pragma mark *** 初始化界面 ***
 -(void)initUI{
      [self setFirstPageView];
+    [self.view addSubview:self.addCartBtn];
 }
 -(void)setFirstPageView{
     
     self.mainScrollView.contentSize=CGSizeMake(0, contenSize);
-    
     //banner图
-    
     [self.mainScrollView addSubview:self.scroView];
     [self.mainScrollView addSubview:self.normalView];
     //加载更多
     [self.mainScrollView addSubview:self.dragBtn];
 }
 -(void)setSecondPageView{
-    UILabel * lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, Screen_width, 21)];
-    lab.backgroundColor=[UIColor lightGrayColor];
-    lab.text=@"我在第二屏的顶头位置";
-    lab.textAlignment=NSTextAlignmentCenter;
-    [self.secScrollView addSubview:lab];
+    
+    [self.secScrollView addSubview:self.parDeView];
 }
 #pragma mark--UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -115,9 +128,6 @@
             //此时第一屏滑到底部 可调滑动手势强度
             [self setSecondPageView];
             self.topBar.hidden=NO;
-//            [self.view bringSubviewToFront:self.botomView];
-//            self.backToTopBtn.hidden=NO;
-//            [self.view addSubview:self.backToTopBtn];
             //然后懒加载第二屏
             [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
                 self.topBar.frame=CGRectMake(0, NaviBarH, Screen_width, TopTabBarH);
@@ -130,10 +140,6 @@
     if (scrollView.tag==200) {
         CGFloat  maxContentOffSet_Y=-dragStrength;
         if (scrollView.contentOffset.y<maxContentOffSet_Y) {
-            
-//            self.backToTopBtn.hidden=YES;
-//            [self.view bringSubviewToFront:self.botomView];
-            
             [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
                 self.secPageHeaderLabel.alpha=0;
                 self.topBar.frame=CGRectMake(0, Screen_height, Screen_width, TopTabBarH);
@@ -145,7 +151,38 @@
         }
     }
 }
-
+#pragma mark *** topbarDelegate ***
+-(void)tabBar:(SecondPageTopBar *)tabBar didSelectIndex:(NSInteger)index{
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"参数");
+            
+            [self.secScrollView addSubview:self.parDeView];
+            [self.photoDeView removeFromSuperview];
+            [self.evaDeView removeFromSuperview];
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"详情");
+            [self.secScrollView addSubview:self.photoDeView];
+            [self.parDeView removeFromSuperview];
+            [self.evaDeView removeFromSuperview];
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"评价");
+            [self.secScrollView addSubview:self.evaDeView];
+            [self.photoDeView removeFromSuperview];
+            [self.parDeView removeFromSuperview];
+        }
+            break;
+        default:
+            break;
+    }
+}
 #pragma mark *** getters ***
 
 -(UIScrollView*)mainScrollView{
@@ -170,9 +207,10 @@
         _secScrollView.showsVerticalScrollIndicator=NO;
         _secScrollView.tag=200;
         _secScrollView.backgroundColor = [UIColor whiteColor];
-        self.secScrollView.contentSize=CGSizeMake(0, contenSize);
+        self.secScrollView.contentSize=CGSizeMake(0, Screen_height-NaviBarH-BottomH-TopTabBarH+3);
         [self.view addSubview:_secScrollView];
         [self.view bringSubviewToFront:self.backView];
+        [self.view bringSubviewToFront:self.topBlackView];
     }
     return _secScrollView;
 }
@@ -189,7 +227,7 @@
 }
 -(SecondPageTopBar*)topBar{
     if (_topBar==nil) {
-        _topBar=[[SecondPageTopBar alloc]initWithArray:@[@"图文详情",@"包装参数",@"商品评价"]];
+        _topBar=[[SecondPageTopBar alloc]initWithArray:@[@"参数",@"详情",@"评价"]];
         _topBar.frame=CGRectMake(0, NaviBarH, Screen_width, TopTabBarH);
         _topBar.delegate=self;
         [self.view addSubview:_topBar];
@@ -211,6 +249,13 @@
     }
     return _normalView;
 }
+-(DetailGroupView *)groupView{
+    if (!_groupView) {
+        _groupView = [[DetailGroupView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.scroView), Screen_width, 450*AdaptationWidth())];
+        
+    }
+    return _groupView;
+}
 -(UIButton *)dragBtn{
     if (!_dragBtn) {
         _dragBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectYH(self.normalView), Screen_width, 60*AdaptationWidth())];
@@ -221,5 +266,33 @@
         _dragBtn.titleLabel.font = WFont(25);
     }
     return _dragBtn;
+}
+-(UIButton *)addCartBtn{
+    if (!_addCartBtn) {
+        _addCartBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, Screen_height-44, Screen_width, 44)];
+        [_addCartBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
+        _addCartBtn.backgroundColor = LH_RGBCOLOR(238, 48, 56);
+        _addCartBtn.titleLabel.font = WFont(37);
+    }
+    return _addCartBtn;
+}
+-(AllParameterView *)parDeView{
+    if (!_parDeView) {
+        _parDeView = [[AllParameterView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, Screen_height-64-TopTabBarH-44)];
+    }
+    return _parDeView;
+}
+-(PhotoDetailView *)photoDeView{
+    if (!_photoDeView) {
+        _photoDeView = [[PhotoDetailView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, CGRectGetHeight(self.parDeView.bounds))];
+        
+    }
+    return _photoDeView;
+}
+-(EvaDetailView *)evaDeView{
+    if (!_evaDeView) {
+        _evaDeView = [[EvaDetailView alloc] initWithFrame:self.photoDeView.bounds];
+    }
+    return _evaDeView;
 }
 @end
