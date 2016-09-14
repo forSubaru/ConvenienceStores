@@ -64,6 +64,7 @@ static NSString *const kReusablecollecCellIdentifier = @"kReusablecollecCellIden
         _collectionView.bounces = false;
         [_collectionView registerClass:[GroupCollectionViewCell class] forCellWithReuseIdentifier:kReusablecollecCellIdentifier];
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kReusableheaderCellIdentifier];
+        _collectionView.backgroundColor = [UIColor whiteColor];
     }
     return _collectionView;
 }
@@ -79,14 +80,23 @@ static NSString *const kReusablecollecCellIdentifier = @"kReusablecollecCellIden
 }
 -(UIButton *)moreBtn{
     if (!_moreBtn) {
+        
         _moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(Screen_width-50, 0, 40, 30)];
+        
         [_moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+        
         [_moreBtn setTitleColor:LH_RGBCOLOR(150, 150, 150) forState:UIControlStateNormal];
+        
         _moreBtn.titleLabel.font = WFont(25);
+        
         [_moreBtn setImage:MImage(@"arrow") forState:UIControlStateNormal];
+        
         _moreBtn.titleEdgeInsets = UIEdgeInsetsMake(0, _moreBtn.imageView.frame.size.width-_moreBtn.frame.size.width+_moreBtn.titleLabel.intrinsicContentSize.width, 0, 0);
+        
         _moreBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -_moreBtn.titleLabel.frame.size.width-_moreBtn.frame.size.width+_moreBtn.imageView.frame.size.width);
+        
         [_moreBtn addTarget:self action:@selector(respondsToMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _moreBtn;
 }

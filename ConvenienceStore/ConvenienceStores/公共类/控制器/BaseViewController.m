@@ -69,6 +69,7 @@
         }else if (headerType == HeaderTypeBackAndThreePoint){
             self.titleLabel.text = title;
             [self.backView addSubview:self.pointBtn];
+            self.view.backgroundColor = mainBackGrayColor;
         }
         
     }
@@ -154,7 +155,7 @@
 -(UIButton *)pointBtn{
     if (!_pointBtn) {
         _pointBtn = [[UIButton alloc] initWithFrame:CGRectMake(Screen_width-44, 0, 44, 44)];
-        [_pointBtn setImage:MImage(@"news") forState:UIControlStateNormal];
+        [_pointBtn setImage:MImage(@"assort") forState:UIControlStateNormal];
     }
     return _pointBtn;
 }

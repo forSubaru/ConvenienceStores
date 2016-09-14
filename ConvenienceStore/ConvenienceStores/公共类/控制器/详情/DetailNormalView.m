@@ -21,12 +21,15 @@
         
         self.detailsells = [self createLabelWithFrame:CGRectMake(CGRectX(self.detailName), CGRectYH(self.detailPrice)+2, 75*AdaptationWidth(), 35*AdaptationWidth()) Title:@"月销量" mutableLabelNumber:@"1654" finalWord:@
                             "件"];
+        
+        
         [self addSubview:self.detailsells];
         [self addSubview:self.detailPrice];
         self.detailRemain = [self createLabelWithFrame:CGRectMake(CGRectXW(self.detailsells)+150*AdaptationWidth(), CGRectY(self.detailsells), 55*AdaptationWidth(), 35*AdaptationWidth()) Title:@"库存" mutableLabelNumber:@"75" finalWord:@"件"];
+        
         [self addSubview:self.detailRemain];
         [self addSubview:self.detailPosition];
-        [self  addSubview:self.detailPromotion];
+        [self addSubview:self.detailPromotion];
         [self addSubview:self.detailProText];
         [self addSubview:self.detailPoint];
         [self addSubview:self.detailPoText];

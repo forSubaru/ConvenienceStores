@@ -32,8 +32,10 @@
             
             lineView.backgroundColor = LH_RGBCOLOR(151, 151, 151);
             [self addSubview:lineView];
-            
-            
+            self.lineView = lineView;
+        }else{
+            self.letter.frame = CGRectMake(0, 0, 10, SelfView_height);
+            self.price.frame = CGRectMake(CGRectXW(self.letter), 0, 45, SelfView_height);
         }
     }
     return self;

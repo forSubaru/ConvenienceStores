@@ -35,7 +35,7 @@
 /**
  *  用户上传照片
  */
-#warning 接口数据没有图片暂时不加
+//#warning 接口数据没有图片暂时不加
 @property (strong,nonatomic) UIImageView *goodImgV;
 
 -(void)updateFrame;

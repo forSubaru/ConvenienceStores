@@ -30,9 +30,8 @@
 
 
 
-
-
-
+-(UILabel *)createLabelWithFrame:(CGRect)frame Title:(NSString *)title mutableLabelNumber:(NSString *)number finalWord:(NSString *)word;
+-(void)initWithThreeArray:(NSArray *)arr;
 
 
 

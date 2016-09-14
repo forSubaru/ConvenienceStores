@@ -19,7 +19,8 @@
 #import "SearchView.h"
 #import "ScrollerView.h"
 #import "RedPriceLabel.h"
-
+#import "NSString+JudgeTextsting.h"
+#import "SXLoadingView.h"
 //三方
 #import <YYKit.h>
 #import <UIView+SDAutoLayout.h>

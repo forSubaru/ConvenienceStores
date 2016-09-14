@@ -18,6 +18,9 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UILabel *letter;
 /**价格*/
 @property (nonatomic,strong) UILabel *price;
+/**划线*/
+@property (nonatomic,strong) UIView *lineView;
+
 
 - (instancetype)initWithFrame:(CGRect)frame string:(NSString *)string priceLabeltype:(PriceLabelType)labelType;
 

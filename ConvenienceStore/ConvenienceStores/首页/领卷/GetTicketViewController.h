@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GetTicketViewController : UIViewController
+@interface GetTicketViewController : BaseViewController
 
 @end

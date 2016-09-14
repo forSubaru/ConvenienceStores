@@ -58,6 +58,8 @@ __block __weak __typeof(&*self)weakSelf = self;
 #define LH_RandomColor          LH_RGBCOLOR(arc4random_uniform(255),arc4random_uniform(255),arc4random_uniform(255))
 #define mainYellowColor LH_RGBCOLOR(243, 191, 8)
 #define mainGrayColor LH_RGBCOLOR(197, 197, 197)
+#define mainBackGrayColor LH_RGBCOLOR(233, 233,233)
+
 //addmethod
 #define CGRectOrigin(v)    v.frame.origin
 #define CGRectSize(v)      v.frame.size

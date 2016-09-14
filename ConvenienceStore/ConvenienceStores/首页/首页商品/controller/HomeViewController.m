@@ -12,6 +12,8 @@
 #import "GroupBugView.h"
 #import "SeckillViewController.h"
 #import "RootViewController.h"
+#import "ChargeViewController.h"
+#import "GetTicketViewController.h"
 @interface HomeViewController ()<FourButtonViewDelegate,HotCollectionViewDelegate,GroupBugViewDelegate>
 /**背景滚动图*/
 @property (nonatomic,strong) UIScrollView *backScroView;
@@ -62,6 +64,12 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"1"}];
     }else if ([title isEqualToString:@"团购"]){
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"2"}];
+    }else if ([title isEqualToString:@"在线充值"]){
+        ChargeViewController *chargeVc = [[ChargeViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"充值中心"];
+        [self.navigationController pushViewController:chargeVc animated:YES];
+    }else{
+        GetTicketViewController *tickVc = [[GetTicketViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"领卷中心"];
+        [self.navigationController pushViewController:tickVc animated:YES];
     }
 }
 -(void)HotColletionView:(HotCollectionView *)hotView selectedItem:(NSString *)itemID{
@@ -86,7 +94,8 @@
 }
 #pragma mark *** Events ***
 -(void)respondsToMoreGoodsBtn:(UIButton *)sender{
-    NSLog(@"%@", sender.titleLabel.text);
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"2"}];
+
 }
 #pragma mark *** getters ***
 -(UIScrollView *)backScroView{
@@ -116,7 +125,6 @@
 -(HotCollectionView *)hotCollectionView{
     if (!_hotCollectionView) {
         _hotCollectionView = [[HotCollectionView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.fourBtnView)+5, Screen_width, 315*AdaptationWidth())];
-        _hotCollectionView.backgroundColor = LH_RandomColor;
         _hotCollectionView.delegate = self;
     }
     return _hotCollectionView;
@@ -124,7 +132,6 @@
 -(GroupBugView *)groupView{
     if (!_groupView) {
         _groupView = [[GroupBugView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.hotCollectionView)+5, Screen_width, 702*AdaptationWidth())];
-        _groupView.backgroundColor = LH_RandomColor;
         _groupView.delegate = self;
     }
     return _groupView;
