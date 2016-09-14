@@ -21,6 +21,7 @@
 #import "RedPriceLabel.h"
 #import "NSString+JudgeTextsting.h"
 #import "SXLoadingView.h"
+#import "UILabel+ChangeTextPartFont.h"
 //三方
 #import <YYKit.h>
 #import <UIView+SDAutoLayout.h>

@@ -10,6 +10,9 @@
 #import "MineHeaderView.h"
 #import "MineCell.h"
 #import "MinePersonalInfoViewController.h"
+#import "MyPointViewController.h"
+#import "MyOrderCenterViewController.h"
+#import "MyDiscountTicketViewController.h"
 static NSString *const kReusableCellIdentifier = @"MineCellIdentifier";
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,MineHeaderViewDelegate>
@@ -59,6 +62,15 @@ static NSString *const kReusableCellIdentifier = @"MineCellIdentifier";
     if ([itemTitle isEqualToString:@"修改信息"]) {
         MinePersonalInfoViewController *personInfo = [[MinePersonalInfoViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"个人信息"];
         [self.navigationController pushViewController:personInfo animated:YES];
+    }else if ([itemTitle isEqualToString:@"积点"]){
+        MyPointViewController *poVc = [[MyPointViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的积点"];
+        [self.navigationController pushViewController:poVc animated:YES];
+    }else if ([itemTitle isEqualToString:@"我的订单"]){
+        MyOrderCenterViewController *poVc = [[MyOrderCenterViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的订单"];
+        [self.navigationController pushViewController:poVc animated:YES];
+    }else if ([itemTitle isEqualToString:@"优惠券"]){
+        MyDiscountTicketViewController *poVc = [[MyDiscountTicketViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的优惠券"];
+        [self.navigationController pushViewController:poVc animated:YES];
     }
 }
 #pragma mark *** UItableViewDataSource ***
