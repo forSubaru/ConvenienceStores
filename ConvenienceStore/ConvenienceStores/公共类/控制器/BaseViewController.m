@@ -9,6 +9,10 @@
 #import "BaseViewController.h"
 
 @interface BaseViewController ()
+{
+    BOOL _hideTabbar;  /*是否隐藏底部标签栏*/
+
+}
 
 /**左上角扫一扫*/
 @property (nonatomic,strong) UIButton *scanBtn;
@@ -27,9 +31,6 @@
 /**搜索*/
 @property (nonatomic,strong) UIButton *searchBtn;
 
-
-
-
 @end
 
 @implementation BaseViewController
@@ -46,15 +47,12 @@
             [self.backView addSubview:self.searchBtn];
             [self.backView addSubview:self.positonNameBtn];
             [self.backView addSubview:self.customerServiceBtn];
-            
         }
-        
     }
     return self;
 }
 //带标题的VC
 -(instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title{
-    
     self = [super init];
     if (self) {
         UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 20)];
@@ -75,12 +73,50 @@
     }
     return self;
 }
+//带标题的VC 是否隐藏标签栏
+-(instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title hideTabbar:(BOOL)isHide{
+    self = [super init];
+    if (self) {
+        
+        _hideTabbar = isHide;
+        
+        UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 20)];
+        blackView.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:blackView];
+        self.topBlackView = blackView;
+        [self.backView addSubview:self.backBtn];
+        [self.backView addSubview:self.titleLabel];
+        
+        if (headerType == HeaderTypeOnlyBack) {
+            
+        }else if (headerType == HeaderTypeBackAndThreePoint){
+            self.titleLabel.text = title;
+            [self.backView addSubview:self.pointBtn];
+            self.view.backgroundColor = mainBackGrayColor;
+        }
+        
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.backView];
+    
+    
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_hideTabbar) {
+        self.tabBarController.tabBar.hidden = true;
+    }
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (_hideTabbar) {
+        self.tabBarController.tabBar.hidden = false;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

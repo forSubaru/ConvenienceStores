@@ -150,6 +150,12 @@
 		ADC0D0151D8931450017B4E7 /* xingbie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D0121D8931450017B4E7 /* xingbie@2x.png */; };
 		ADC0D0161D8931450017B4E7 /* xingbie@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D0131D8931450017B4E7 /* xingbie@3x.png */; };
 		ADC0D0191D89390D0017B4E7 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D0181D89390D0017B4E7 /* ChangePasswordViewController.m */; };
+		ADC4D71D1D8E252000122B33 /* xjiantou.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC4D71A1D8E252000122B33 /* xjiantou.png */; };
+		ADC4D71E1D8E252000122B33 /* xjiantou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC4D71B1D8E252000122B33 /* xjiantou@2x.png */; };
+		ADC4D71F1D8E252000122B33 /* xjiantou@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC4D71C1D8E252000122B33 /* xjiantou@3x.png */; };
+		ADC4D7221D8E2D9D00122B33 /* MyPointTableheadView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC4D7211D8E2D9D00122B33 /* MyPointTableheadView.m */; };
+		ADC4D7251D8E3DF000122B33 /* MyOrderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC4D7241D8E3DF000122B33 /* MyOrderTopView.m */; };
+		ADC4D72B1D8E682E00122B33 /* MyOrderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC4D72A1D8E682E00122B33 /* MyOrderTableCell.m */; };
 		ADC5B5831D8115AA00B50C57 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC5B5801D8115AA00B50C57 /* bg.png */; };
 		ADC5B5841D8115AA00B50C57 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC5B5811D8115AA00B50C57 /* bg@2x.png */; };
 		ADC5B5851D8115AA00B50C57 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC5B5821D8115AA00B50C57 /* bg@3x.png */; };
@@ -458,6 +464,15 @@
 		ADC0D0131D8931450017B4E7 /* xingbie@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xingbie@3x.png"; sourceTree = "<group>"; };
 		ADC0D0171D89390D0017B4E7 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		ADC0D0181D89390D0017B4E7 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		ADC4D71A1D8E252000122B33 /* xjiantou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xjiantou.png; sourceTree = "<group>"; };
+		ADC4D71B1D8E252000122B33 /* xjiantou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xjiantou@2x.png"; sourceTree = "<group>"; };
+		ADC4D71C1D8E252000122B33 /* xjiantou@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xjiantou@3x.png"; sourceTree = "<group>"; };
+		ADC4D7201D8E2D9D00122B33 /* MyPointTableheadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointTableheadView.h; sourceTree = "<group>"; };
+		ADC4D7211D8E2D9D00122B33 /* MyPointTableheadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointTableheadView.m; sourceTree = "<group>"; };
+		ADC4D7231D8E3DF000122B33 /* MyOrderTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTopView.h; sourceTree = "<group>"; };
+		ADC4D7241D8E3DF000122B33 /* MyOrderTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTopView.m; sourceTree = "<group>"; };
+		ADC4D7291D8E682E00122B33 /* MyOrderTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableCell.h; sourceTree = "<group>"; };
+		ADC4D72A1D8E682E00122B33 /* MyOrderTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableCell.m; sourceTree = "<group>"; };
 		ADC5B5801D8115AA00B50C57 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		ADC5B5811D8115AA00B50C57 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		ADC5B5821D8115AA00B50C57 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
@@ -1199,6 +1214,8 @@
 				ADFD003B1D8956BE000FFF95 /* MyPointCell.m */,
 				ADFD00631D895A23000FFF95 /* MyPointHeadView.h */,
 				ADFD00641D895A23000FFF95 /* MyPointHeadView.m */,
+				ADC4D7201D8E2D9D00122B33 /* MyPointTableheadView.h */,
+				ADC4D7211D8E2D9D00122B33 /* MyPointTableheadView.m */,
 			);
 			path = "积点";
 			sourceTree = "<group>";
@@ -1438,6 +1455,10 @@
 		ADFD002C1D89445B000FFF95 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				ADC4D7231D8E3DF000122B33 /* MyOrderTopView.h */,
+				ADC4D7241D8E3DF000122B33 /* MyOrderTopView.m */,
+				ADC4D7291D8E682E00122B33 /* MyOrderTableCell.h */,
+				ADC4D72A1D8E682E00122B33 /* MyOrderTableCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1445,6 +1466,9 @@
 		ADFD00501D895877000FFF95 /* 积点 */ = {
 			isa = PBXGroup;
 			children = (
+				ADC4D71A1D8E252000122B33 /* xjiantou.png */,
+				ADC4D71B1D8E252000122B33 /* xjiantou@2x.png */,
+				ADC4D71C1D8E252000122B33 /* xjiantou@3x.png */,
 				ADFD00511D895877000FFF95 /* gantan.png */,
 				ADFD00521D895877000FFF95 /* gantan@2x.png */,
 				ADFD00531D895877000FFF95 /* gantan@3x.png */,
@@ -1588,6 +1612,7 @@
 				ADC845E11D87FDBB00805944 /* jiameng@2x.png in Resources */,
 				AD55414E1D7D0BF200876942 /* sousuo@3x.png in Resources */,
 				ADDBED2D1D755F3C000D0ADC /* user_color@3x.png in Resources */,
+				ADC4D71D1D8E252000122B33 /* xjiantou.png in Resources */,
 				ADC846161D87FEC300805944 /* jianyi.png in Resources */,
 				ADC8461D1D87FECE00805944 /* wenti@2x.png in Resources */,
 				ADBB5EF51D76D9CF00B08D6C /* arrow.png in Resources */,
@@ -1603,6 +1628,7 @@
 				ADDBED2E1D755F3C000D0ADC /* user.png in Resources */,
 				ADBB5EE71D76CEA200B08D6C /* corps@2x.png in Resources */,
 				ADC0CFCF1D88DC1C0017B4E7 /* beijing.png in Resources */,
+				ADC4D71E1D8E252000122B33 /* xjiantou@2x.png in Resources */,
 				ADBB5EB81D76897F00B08D6C /* mike@2x.png in Resources */,
 				ADC5B5841D8115AA00B50C57 /* bg@2x.png in Resources */,
 				ADBB5EE81D76CEA200B08D6C /* corps@3x.png in Resources */,
@@ -1730,6 +1756,7 @@
 				ADBB5ED01D76B56500B08D6C /* more@2x.png in Resources */,
 				ADC0D0151D8931450017B4E7 /* xingbie@2x.png in Resources */,
 				ADBEFFE81D77C48D000BCB9E /* icon.png in Resources */,
+				ADC4D71F1D8E252000122B33 /* xjiantou@3x.png in Resources */,
 				ADC8461E1D87FECE00805944 /* wenti@3x.png in Resources */,
 				ADFD00611D895877000FFF95 /* rqi@2x.png in Resources */,
 			);
@@ -1799,7 +1826,9 @@
 				AD7D0CBC1D7FBF2300A0B1C0 /* AllParameterView.m in Sources */,
 				AD5541631D7D4A5A00876942 /* TypesCollectionViewCell.m in Sources */,
 				ADBB5EDA1D76C98300B08D6C /* GroupCollectionViewCell.m in Sources */,
+				ADC4D7221D8E2D9D00122B33 /* MyPointTableheadView.m in Sources */,
 				AD55417A1D7D727400876942 /* DetailGroupView.m in Sources */,
+				ADC4D72B1D8E682E00122B33 /* MyOrderTableCell.m in Sources */,
 				ADC0CFF21D88FC500017B4E7 /* MineCell.m in Sources */,
 				ADC845B31D87A03400805944 /* ChargeViewController.m in Sources */,
 				ADBEFFF81D77D3DF000BCB9E /* SecKillTableViewCell.m in Sources */,
@@ -1808,6 +1837,7 @@
 				ADBE07AC1D742CC200478041 /* ShopCartViewController.m in Sources */,
 				AD5541771D7D723D00876942 /* GoodsDetailViewController.m in Sources */,
 				ADC0CFF41D88FC500017B4E7 /* MineViewController.m in Sources */,
+				ADC4D7251D8E3DF000122B33 /* MyOrderTopView.m in Sources */,
 				AD55415A1D7D0FF200876942 /* GoodsTypeViewController.m in Sources */,
 				AD7D0CE91D800FB600A0B1C0 /* GroupVariousCell.m in Sources */,
 				AD7D0CCE1D7FF52600A0B1C0 /* StarView.m in Sources */,

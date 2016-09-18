@@ -63,13 +63,13 @@ static NSString *const kReusableCellIdentifier = @"MineCellIdentifier";
         MinePersonalInfoViewController *personInfo = [[MinePersonalInfoViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"个人信息"];
         [self.navigationController pushViewController:personInfo animated:YES];
     }else if ([itemTitle isEqualToString:@"积点"]){
-        MyPointViewController *poVc = [[MyPointViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的积点"];
+        MyPointViewController *poVc = [[MyPointViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的积点" hideTabbar:YES];
         [self.navigationController pushViewController:poVc animated:YES];
     }else if ([itemTitle isEqualToString:@"我的订单"]){
-        MyOrderCenterViewController *poVc = [[MyOrderCenterViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的订单"];
+        MyOrderCenterViewController *poVc = [[MyOrderCenterViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"订单中心" hideTabbar:YES];
         [self.navigationController pushViewController:poVc animated:YES];
     }else if ([itemTitle isEqualToString:@"优惠券"]){
-        MyDiscountTicketViewController *poVc = [[MyDiscountTicketViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的优惠券"];
+        MyDiscountTicketViewController *poVc = [[MyDiscountTicketViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"我的优惠券" hideTabbar:YES];
         [self.navigationController pushViewController:poVc animated:YES];
     }
 }

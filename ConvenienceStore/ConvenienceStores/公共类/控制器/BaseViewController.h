@@ -26,4 +26,6 @@ typedef enum : NSUInteger {
 
 - (instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title;
 
+-(instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title hideTabbar:(BOOL)isHide;
+
 @end

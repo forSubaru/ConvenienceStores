@@ -13,7 +13,7 @@
 #import "Custom.h"
 /**
  将IPHONE_WIDTH改为设计图纸的宽度
- 在使用的时候直接使用BQAdaptationFrame函数
+ 在使用的时候直接使用AdaptationFrame函数
  若通过CGRectGetMaxX(firstView.frame)获取视图坐标
  需判断该视图是否已做过适配，若做过适配需要除以AdaptationWidth()
  还原为其设计图上的坐标位置
