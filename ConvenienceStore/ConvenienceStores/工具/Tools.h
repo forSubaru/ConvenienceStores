@@ -35,7 +35,7 @@ UIKIT_EXTERN NSString * _Nonnull const kSelectedImageWithShopCartVc;
 UIKIT_EXTERN NSString * _Nonnull const kSelectedImageWithPersonalCenterVc;
 
 #pragma mark *** 网络请求requestCode ***
-UIKIT_EXTERN NSString * _Nonnull const kRequestCodeLogin;
+UIKIT_EXTERN NSString * _Nonnull const kUserDefaultLogin;
 #pragma mark *** 通知 ***
 UIKIT_EXTERN NSString * _Nonnull const kNotificationRootTabbar;
 

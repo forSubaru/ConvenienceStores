@@ -1,18 +1,18 @@
 //
-//  ShopCartViewController.m
+//  ContactGMViewController.m
 //  ConvenienceStores
 //
-//  Created by 王子豪 on 16/8/29.
+//  Created by 王子豪 on 16/9/19.
 //  Copyright © 2016年 王子豪. All rights reserved.
 //
 
-#import "ShopCartViewController.h"
+#import "ContactGMViewController.h"
 
-@interface ShopCartViewController ()
+@interface ContactGMViewController ()
 
 @end
 
-@implementation ShopCartViewController
+@implementation ContactGMViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

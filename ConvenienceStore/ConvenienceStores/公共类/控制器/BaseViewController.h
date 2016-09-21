@@ -9,6 +9,7 @@
 typedef enum : NSUInteger {
     HeaderTypeHomeVc,
     HeaderTypeSupermaket,
+    HeaderTypeShopCart,
     HeaderTypeBackAndThreePoint,
     HeaderTypeOnlyBack
 } HeaderType;
@@ -27,5 +28,6 @@ typedef enum : NSUInteger {
 - (instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title;
 
 -(instancetype)initWithHeaderType:(HeaderType)headerType title:(NSString *)title hideTabbar:(BOOL)isHide;
-
+//返回键留出来可以重写
+-(void)respondsToReturnBtn:(UIButton *)sender;
 @end

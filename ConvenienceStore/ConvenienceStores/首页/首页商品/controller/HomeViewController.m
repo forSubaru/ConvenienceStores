@@ -144,8 +144,10 @@
         [_moreGoodsBtn setTitleColor:LH_RGBCOLOR(150, 150, 150) forState:UIControlStateNormal];
         _moreGoodsBtn.titleLabel.font = WFont(30);
         [_moreGoodsBtn setImage:MImage(@"more") forState:UIControlStateNormal];
+        
         _moreGoodsBtn.titleEdgeInsets = UIEdgeInsetsMake(0, _moreGoodsBtn.imageView.frame.size.width-_moreGoodsBtn.frame.size.width+_moreGoodsBtn.titleLabel.intrinsicContentSize.width, 0, 0);
         _moreGoodsBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -_moreGoodsBtn.titleLabel.frame.size.width-_moreGoodsBtn.frame.size.width+_moreGoodsBtn.imageView.frame.size.width);
+        
         [_moreGoodsBtn addTarget:self action:@selector(respondsToMoreGoodsBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _moreGoodsBtn;

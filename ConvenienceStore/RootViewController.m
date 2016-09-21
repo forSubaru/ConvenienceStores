@@ -14,6 +14,7 @@
 #import "GroupBuyViewController.h"
 #import "MineViewController.h"
 
+#import "LoginNormalViewController.h"
 #define TabBarBtn_tag 10
 
 @interface RootViewController ()
@@ -62,7 +63,7 @@
     HomeViewController *homeVc = [[HomeViewController alloc] initWithHeaderType:HeaderTypeHomeVc];
     GoodsTypeViewController *goodVc = [[GoodsTypeViewController alloc] initWithHeaderType:HeaderTypeSupermaket];
     GroupBuyViewController *groupVc = [[GroupBuyViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"团购"];
-    ShopCartViewController *cartVc = [[ShopCartViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"购物车"];
+    ShopCartViewController *cartVc = [[ShopCartViewController alloc] initWithHeaderType:HeaderTypeShopCart title:@"购物车"];
     MineViewController *minVc = [[MineViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"个人中心"];
     
     NSArray *viewControllers = @[homeVc,goodVc,groupVc,cartVc,minVc];
@@ -73,8 +74,6 @@
         
         obj.navigationController.navigationBar.hidden = true;
         [naviArrs addObject:naviCon];
-        
-        
     }];
     
     self.viewControllers = naviArrs;
@@ -133,7 +132,7 @@
 #pragma mark *** BtnEvents ***
 
 -(void)respondsToItemBtn:(UIButton *)sender{
-    NSLog(@"dianjide--%ld", sender.tag);
+
     
     for (UIButton *btn in self.tabBar.subviews) {
         if(btn.tag>=TabBarBtn_tag&&btn.tag<=TabBarBtn_tag+5){
@@ -145,7 +144,23 @@
         }
     }
     self.selectedIndex = sender.tag-TabBarBtn_tag;
+    
+    NSLog(@"%ld", self.selectedIndex);
+    
+    if (self.selectedIndex==4) {
+        [self judgeLoginState];
+    }
 }
-
+-(void)judgeLoginState{
+    if (![USERDEFAULT objectForKey:kUserDefaultLogin]) {
+        NSLog(@"未登录");
+        
+        LoginNormalViewController *normal = [[LoginNormalViewController alloc] initWithHeaderType:HeaderTypeOnlyBack title:@"登录" hideTabbar:YES];
+        [self presentViewController:normal animated:YES completion:nil];
+        
+    }else{
+        NSLog(@"已登录");
+    }
+}
 
 @end

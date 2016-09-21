@@ -57,7 +57,7 @@
     if (self) {
         UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 20)];
         blackView.backgroundColor = [UIColor blackColor];
-                [self.view addSubview:blackView];
+        [self.view addSubview:blackView];
         self.topBlackView = blackView;
         [self.backView addSubview:self.backBtn];
         [self.backView addSubview:self.titleLabel];
@@ -68,6 +68,10 @@
             self.titleLabel.text = title;
             [self.backView addSubview:self.pointBtn];
             self.view.backgroundColor = mainBackGrayColor;
+        }else if (headerType ==HeaderTypeShopCart){
+            self.titleLabel.text = title;
+            self.view.backgroundColor = mainBackGrayColor;
+            [self.backBtn removeFromSuperview];
         }
         
     }
@@ -86,13 +90,13 @@
         self.topBlackView = blackView;
         [self.backView addSubview:self.backBtn];
         [self.backView addSubview:self.titleLabel];
-        
+        self.titleLabel.text = title;
+        self.view.backgroundColor = mainBackGrayColor;
+
         if (headerType == HeaderTypeOnlyBack) {
             
         }else if (headerType == HeaderTypeBackAndThreePoint){
-            self.titleLabel.text = title;
             [self.backView addSubview:self.pointBtn];
-            self.view.backgroundColor = mainBackGrayColor;
         }
         
     }
