@@ -5,10 +5,12 @@
 //  Created by 王子豪 on 16/8/30.
 //  Copyright © 2016年 王子豪. All rights reserved.
 //
-
+enum{
+    SearchBtnTag = 30,
+};
 #import "BaseViewController.h"
-
-@interface BaseViewController ()
+#import "SearchGoodsViewController.h"
+@interface BaseViewController ()<SearchViewDelegate>
 {
     BOOL _hideTabbar;  /*是否隐藏底部标签栏*/
 
@@ -125,10 +127,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark *** TopViewDelegate ***
+-(void)SearchView:(SearchView *)searView didSelectedSearchButton:(UIButton *)sender{
+    SearchGoodsViewController *searViewCpmtr = [[SearchGoodsViewController alloc] initWithHeaderType:HeaderTypeOnlyBack title:@"" hideTabbar:YES];
+    [self.navigationController pushViewController:searViewCpmtr animated:YES];
+}
 #pragma mark *** events ***
 -(void)respondsToReturnBtn:(UIButton *)sender{
     [self.navigationController popViewControllerAnimated:true];
+}
+-(void)respondsToTopBtn:(UIButton *)sender{
+    switch (sender.tag) {
+        case SearchBtnTag:
+        {
+            NSLog(@"搜索");
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 #pragma mark *** getters ***
 
@@ -144,6 +162,7 @@
     if (!_scanBtn) {
         _scanBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [_scanBtn setImage:MImage(@"code") forState:UIControlStateNormal];
+        
     }
     return _scanBtn;
 }
@@ -158,7 +177,7 @@
     if (!_searchView) {
         _searchView = [[SearchView alloc] initWithFrame:CGRectMake(0, 0, 420*AdaptationWidth(), 50*AdaptationWidth())];
         _searchView.center = CGPointMake(self.backView.center.x, self.backView.center.y-20);
-        
+        _searchView.delegate = self;
     }
     return _searchView;
 }
@@ -203,6 +222,8 @@
     if (!_searchBtn) {
         _searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [_searchBtn setImage:MImage(@"find") forState:UIControlStateNormal];
+        _searchBtn.tag = SearchBtnTag;
+        [_searchBtn addTarget:self action:@selector(respondsToTopBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchBtn;
 }

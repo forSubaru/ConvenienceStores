@@ -10,6 +10,9 @@
 #import "ShopCartTopHeadView.h"
 #import "ShopCartCell.h"
 #import "ShopCartFootView.h"
+
+#import "SureOrderViewController.h"
+
 static NSString *const kReusableCellIdentifier = @"ShopCartcellIdentifier";
 
 @interface ShopCartViewController ()<UITableViewDelegate,UITableViewDataSource,ShopCartCellDelegate,ShopCartFootViewDelegate>
@@ -68,6 +71,9 @@ static NSString *const kReusableCellIdentifier = @"ShopCartcellIdentifier";
 -(void)ShopCartFootView:(ShopCartFootView *)footView didSelectedButton:(UIButton *)sender{
     if ([sender.titleLabel.text isEqualToString:@"全选"]) {
         sender.selected = !sender.selected;
+    }else if ([sender.titleLabel.text isEqualToString:@"去结算"]){
+        SureOrderViewController *su = [[SureOrderViewController alloc] initWithHeaderType:HeaderTypeOnlyBack title:@"确认订单" hideTabbar:YES];
+        [self.navigationController pushViewController:su animated:YES];
     }
     NSLog(@"%@", sender.titleLabel.text);
 }

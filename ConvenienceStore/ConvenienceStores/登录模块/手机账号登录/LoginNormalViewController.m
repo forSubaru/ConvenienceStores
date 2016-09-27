@@ -9,6 +9,7 @@
 #import "LoginNormalViewController.h"
 #import "RegisterViewController.h"
 #import "LoginVerificationViewController.h"
+#import "ForgetPSDViewController.h"
 @interface LoginNormalViewController ()
 
 @end
@@ -100,6 +101,9 @@
     }else if ([text isEqualToString:@"新用户注册"]){
         RegisterViewController *regisV = [[RegisterViewController alloc] initWithHeaderType:HeaderTypeOnlyBack title:@"注册" hideTabbar:YES];
         [self presentViewController:regisV animated:YES completion:nil];
+    }else if ([text isEqualToString:@"忘记密码"]){
+        ForgetPSDViewController *forget = [[ForgetPSDViewController alloc] initWithHeaderType:HeaderTypeOnlyBack title:@"忘记密码" hideTabbar:YES];
+        [self presentViewController:forget animated:YES completion:nil];
     }
 }
 

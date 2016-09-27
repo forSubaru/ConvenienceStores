@@ -41,12 +41,18 @@
     
     
 }
-
+#pragma mark *** events ***
+-(void)respondsToSearchBtn:(UIButton *)sender{
+    if (_delegate && [_delegate respondsToSelector:@selector(SearchView:didSelectedSearchButton:)]) {
+        [_delegate SearchView:self didSelectedSearchButton:sender];
+    };
+}
 #pragma mark *** getters ***
 -(UIButton *)searchBtn{
     if (!_searchBtn) {
         _searchBtn = [[UIButton alloc] initWithFrame:AdaptationFrame(12, 10, 33, 33)];
         [_searchBtn setImage:MImage(@"rej") forState:UIControlStateNormal];
+        [_searchBtn addTarget:self action:@selector(respondsToSearchBtn:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _searchBtn;
@@ -54,7 +60,7 @@
 
 -(UITextField *)searchTextField{
     if (!_searchTextField) {
-        _searchTextField = [[UITextField alloc] initWithFrame:AdaptationFrame(CGRectXW(self.searchBtn)/AdaptationWidth(), 0, 325, self.bounds.size.height/AdaptationWidth())];
+        _searchTextField = [[UITextField alloc] initWithFrame:AdaptationFrame(CGRectXW(self.searchBtn)/AdaptationWidth(), 0, self.bounds.size.width/AdaptationWidth()-90, self.bounds.size.height/AdaptationWidth())];
         
     }
     return _searchTextField;

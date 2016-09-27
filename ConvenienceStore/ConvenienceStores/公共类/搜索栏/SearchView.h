@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SearchView;
+@protocol SearchViewDelegate <NSObject>
 
+-(void)SearchView:(SearchView *)searView didSelectedSearchButton:(UIButton *)sender;
+
+@end
 @interface SearchView : UIView
+@property (nonatomic,weak) id<SearchViewDelegate> delegate; /*代理人*/
 
 @end
