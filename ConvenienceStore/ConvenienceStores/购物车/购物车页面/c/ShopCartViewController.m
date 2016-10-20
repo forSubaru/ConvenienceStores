@@ -61,7 +61,7 @@ static NSString *const kReusableCellIdentifier = @"ShopCartcellIdentifier";
 #pragma mark *** cellDelegate ***
 //选择某个cell
 -(void)ShopCartCellSelected:(ShopCartCell *)cartCell{
-    cartCell.cellSelecBtn.selected =  !cartCell.cellSelecBtn.selected;
+    cartCell.cellSelecBtn.selected = !cartCell.cellSelecBtn.selected;
 }
 //改变商品的number
 -(void)ShopCartCell:(ShopCartCell *)cartCell goodsNumberChange:(NSString *)number{

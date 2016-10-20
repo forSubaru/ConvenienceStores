@@ -82,7 +82,7 @@
             cell.cellTitle.text = @"快捷支付";
             cell.cellDetail.text = @"社区快捷支付服务";
         }else{
-            [cell.cellImage setImage:MImage(@"weixinwm") forState:0];
+            [cell.cellImage setImage:MImage(@"weixinbm") forState:0];
             cell.cellTitle.text = @"微信支付";
             cell.cellDetail.text = @"微信安全支付";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

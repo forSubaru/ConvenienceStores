@@ -9,6 +9,9 @@
 #import "MyOrderCenterViewController.h"
 #import "MyOrderTopView.h"
 #import "MyOrderTableCell.h"
+
+#import "OrderRefundViewController.h"
+
 static NSString *const kReusableCellIdentifier = @"OrdercellIdentifier";
 
 @interface MyOrderCenterViewController ()<MyOrderTopViewDelegate,UITableViewDelegate,UITableViewDataSource,MyOrderTableCellDelegate>
@@ -70,7 +73,13 @@ static NSString *const kReusableCellIdentifier = @"OrdercellIdentifier";
 }
 #pragma mark *** cellDelegate ***
 -(void)MyOrderTableCell:(MyOrderTableCell *)orderCell didTapButtonWithTitle:(NSString *)title{
+    
     NSLog(@"%@", title);
+    
+    if ([title isEqualToString:@"申请退款"]) {
+        OrderRefundViewController *oderVc = [[OrderRefundViewController alloc] initWithHeaderType:HeaderTypeOnlyBack title:@"申请退款" hideTabbar:YES];
+        [self.navigationController pushViewController:oderVc animated:YES];
+    }
 }
 #pragma mark *** getters ***
 -(MyOrderTopView *)topView{

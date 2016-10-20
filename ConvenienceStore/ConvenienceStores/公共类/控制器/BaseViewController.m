@@ -10,6 +10,7 @@ enum{
 };
 #import "BaseViewController.h"
 #import "SearchGoodsViewController.h"
+//#import <IQKeyboardManager.h>
 @interface BaseViewController ()<SearchViewDelegate>
 {
     BOOL _hideTabbar;  /*是否隐藏底部标签栏*/
@@ -113,8 +114,15 @@ enum{
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    [IQKeyboardManager sharedManager].enable = YES;
+    
     if (_hideTabbar) {
+        
         self.tabBarController.tabBar.hidden = true;
+        
     }
 }
 -(void)viewWillDisappear:(BOOL)animated{

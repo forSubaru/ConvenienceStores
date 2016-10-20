@@ -34,6 +34,9 @@
 /**选择时间View*/
 @property (nonatomic,strong) SelectSendTimeView *StimeView;
 
+/**备注*/
+@property (nonatomic,strong) UITextField *commentTF;
+
 
 @end
 
@@ -79,14 +82,14 @@
     return 2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    //地址
     if (indexPath.section==0) {
         SureAddressCell *cell = [[SureAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"surecell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    
+    //商品信息
     if (indexPath.section==1) {
         if (indexPath.row<_dataSource.count) {
             SureOrderCell *cell = [[SureOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sureOrder"];
@@ -106,9 +109,19 @@
         if (index<2) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
+        //备注
+        if (index==5) {
+            [cell.contentView addSubview:self.commentTF];
+        }
+        //合计
+        if (index==6) {
+            cell.detailTextLabel.text = @"共计1件商品 合计：¥64.50";
+            cell.detailTextLabel.textColor = [UIColor blackColor];
+            [UILabel setLabeltextAttributes:cell.detailTextLabel withColor:[UIColor redColor] range:NSMakeRange(10, 6)];
+        }
         return cell;
     }
-    
+    //优惠
     DiscountCell *cell = [[DiscountCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"discell"];
     cell.textLabel.text = @"优惠券(现有0张)";
     cell.textLabel.font = WFont(27);
@@ -217,5 +230,14 @@
         
     }
     return _priceLabel;
+}
+-(UITextField *)commentTF{
+    if (!_commentTF) {
+        _commentTF = [[UITextField alloc] initWithFrame:AdaptationFrame(Screen_width/AdaptationWidth()-450, 0, 450, 90)];
+        _commentTF.textAlignment = 1;
+        _commentTF.font = WFont(25);
+        _commentTF.placeholder = SureCommentPSD;
+    }
+    return _commentTF;
 }
 @end

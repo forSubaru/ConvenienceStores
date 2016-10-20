@@ -85,4 +85,7 @@ __block __weak __typeof(&*self)weakSelf = self;
 //存贮路径
 #define UserDocumentD NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]
 
+//确认订单placehoder
+#define SureCommentPSD @"选填：请添加附加要求（建议填写商量好的）"
+
 #endif /* Custom_h */

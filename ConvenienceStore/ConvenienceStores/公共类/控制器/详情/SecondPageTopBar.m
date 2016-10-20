@@ -45,6 +45,11 @@
     }
     return self;
 }
+-(void)removeFromSuperview{
+    [super removeFromSuperview];
+    
+    self.bottomView.frame = CGRectMake(0, self.btnH - indictorH, self.btnW, indictorH);
+}
 
 /**
  添加顶部标题项的名字

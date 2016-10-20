@@ -63,7 +63,7 @@
     HomeViewController *homeVc = [[HomeViewController alloc] initWithHeaderType:HeaderTypeHomeVc];
     GoodsTypeViewController *goodVc = [[GoodsTypeViewController alloc] initWithHeaderType:HeaderTypeSupermaket];
     GroupBuyViewController *groupVc = [[GroupBuyViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"团购"];
-    ShopCartViewController *cartVc = [[ShopCartViewController alloc] initWithHeaderType:HeaderTypeShopCart title:@"购物车"];
+    ShopCartViewController *cartVc = [[ShopCartViewController alloc] initWithHeaderType:HeaderTypeShopCart title:@"购物车" hideTabbar:false];
     MineViewController *minVc = [[MineViewController alloc] initWithHeaderType:HeaderTypeBackAndThreePoint title:@"个人中心"];
     
     NSArray *viewControllers = @[homeVc,goodVc,groupVc,cartVc,minVc];

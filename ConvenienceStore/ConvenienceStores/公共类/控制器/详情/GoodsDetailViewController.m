@@ -8,6 +8,9 @@
 #define contenSize 694.0  //两个scrollView的contentSize大小
 #define dragStrength 60.0 //拖拽强度
 
+#define HOMEBTNTAG 20
+#define CARTBTNTAG 21
+
 #import "GoodsDetailViewController.h"
 #import "SecondPageTopBar.h"
 #import "AllParameterView.h"
@@ -38,6 +41,11 @@
 /**评价*/
 @property (nonatomic,strong) EvaDetailView *evaDeView;
 
+/**首页按钮*/
+@property (nonatomic,strong) UIButton *homeBtn;
+/**购物车按钮*/
+@property (nonatomic,strong) UIButton *cartBtn;
+
 
 
 
@@ -55,6 +63,7 @@
         }else{
             [self.normalView removeFromSuperview];
             [self.mainScrollView addSubview:self.groupView];
+            
         }
     }
     return self;
@@ -86,6 +95,9 @@
 -(void)initUI{
      [self setFirstPageView];
     [self.view addSubview:self.addCartBtn];
+    
+    [self.view addSubview:self.homeBtn];
+    [self.view addSubview:self.cartBtn];
 }
 -(void)setFirstPageView{
     
@@ -99,6 +111,30 @@
 -(void)setSecondPageView{
     
     [self.secScrollView addSubview:self.parDeView];
+}
+//点击主页和购物车按钮
+#pragma mark *** EVENTS ***
+-(void)respondsToRightDoubleBtn:(UIButton *)sender{
+    
+    self.tabBarController.tabBar.hidden = false;
+
+    switch (sender.tag) {
+        case HOMEBTNTAG:
+        {
+            [self.navigationController popViewControllerAnimated:false];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"0"}];
+        }
+            break;
+        case CARTBTNTAG:
+        {
+            [self.navigationController popViewControllerAnimated:false];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRootTabbar object:nil userInfo:@{@"index":@"3"}];
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 #pragma mark--UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -121,19 +157,28 @@
         }
     }
 }
+
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (scrollView.tag==100) {
         CGFloat mininumContentset_Y=self.mainScrollView.contentSize.height-Screen_height+BottomH +dragStrength;
         if(scrollView.contentOffset.y>mininumContentset_Y){
             //此时第一屏滑到底部 可调滑动手势强度
             [self setSecondPageView];
-            self.topBar.hidden=NO;
+//            self.topBar.hidden=NO;
+//            self.homeBtn.hidden = false;
+            [self.view addSubview:self.topBar];
             //然后懒加载第二屏
             [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
                 self.topBar.frame=CGRectMake(0, NaviBarH, Screen_width, TopTabBarH);
                 self.secScrollView.frame=CGRectMake(0, NaviBarH+TopTabBarH, Screen_width, Screen_height-NaviBarH-BottomH-TopTabBarH);
                 self.mainScrollView.frame=CGRectMake(0, NaviBarH-contenSize, Screen_width, Screen_height);
+                
+                
             } completion:^(BOOL finished) {
+                //隐藏掉两个btn
+                [self.homeBtn removeFromSuperview];
+                [self.cartBtn removeFromSuperview];
+                
             }];
         }
     }
@@ -146,42 +191,56 @@
                 self.secScrollView.frame=CGRectMake(0, Screen_height+TopTabBarH, Screen_width, Screen_height-NaviBarH-BottomH-TopTabBarH);
                 self.mainScrollView.frame=CGRectMake(0, 64, Screen_width, Screen_height-BottomH);
             } completion:^(BOOL finished) {
-                self.topBar.hidden=YES;
+//                self.topBar.hidden=YES;
+                [self.view addSubview:self.homeBtn];
+                [self.view addSubview:self.cartBtn];
+                [self.topBar removeFromSuperview];
             }];
         }
     }
 }
 #pragma mark *** topbarDelegate ***
 -(void)tabBar:(SecondPageTopBar *)tabBar didSelectIndex:(NSInteger)index{
-    switch (index) {
-        case 0:
-        {
-            NSLog(@"参数");
-            
-            [self.secScrollView addSubview:self.parDeView];
-            [self.photoDeView removeFromSuperview];
-            [self.evaDeView removeFromSuperview];
+    
+    NSArray *arr = @[self.parDeView,self.photoDeView,self.evaDeView];
+    
+    for (int idx = 0; idx<3; idx++) {
+        if (idx==index) {
+            [self.secScrollView addSubview:arr[index]];
+        }else{
+            [arr[idx] removeFromSuperview];
         }
-            break;
-        case 1:
-        {
-            NSLog(@"详情");
-            [self.secScrollView addSubview:self.photoDeView];
-            [self.parDeView removeFromSuperview];
-            [self.evaDeView removeFromSuperview];
-        }
-            break;
-        case 2:
-        {
-            NSLog(@"评价");
-            [self.secScrollView addSubview:self.evaDeView];
-            [self.photoDeView removeFromSuperview];
-            [self.parDeView removeFromSuperview];
-        }
-            break;
-        default:
-            break;
     }
+    
+//    switch (index) {
+//        case 0:
+//        {
+//            NSLog(@"参数");
+//            
+//            [self.secScrollView addSubview:self.parDeView];
+//            [self.photoDeView removeFromSuperview];
+//            [self.evaDeView removeFromSuperview];
+//        }
+//            break;
+//        case 1:
+//        {
+//            NSLog(@"详情");
+//            [self.secScrollView addSubview:self.photoDeView];
+//            [self.parDeView removeFromSuperview];
+//            [self.evaDeView removeFromSuperview];
+//        }
+//            break;
+//        case 2:
+//        {
+//            NSLog(@"评价");
+//            [self.secScrollView addSubview:self.evaDeView];
+//            [self.photoDeView removeFromSuperview];
+//            [self.parDeView removeFromSuperview];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
 }
 #pragma mark *** getters ***
 
@@ -195,6 +254,7 @@
         _mainScrollView.tag =100;
         _mainScrollView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:_mainScrollView];
+
     }
     return _mainScrollView;
 }
@@ -295,4 +355,23 @@
     }
     return _evaDeView;
 }
+-(UIButton *)homeBtn{
+    if (!_homeBtn) {
+        _homeBtn = [[UIButton alloc] initWithFrame:AdaptationFrame(Screen_width/AdaptationWidth()-200, 70/AdaptationWidth(), 75, 75)];
+        [_homeBtn setImage:MImage(@"leaf") forState:0];
+        _homeBtn.tag = HOMEBTNTAG;
+        [_homeBtn addTarget:self action:@selector(respondsToRightDoubleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _homeBtn;
+}
+-(UIButton *)cartBtn{
+    if (!_cartBtn) {
+        _cartBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectXW(self.homeBtn)+25*AdaptationWidth(), CGRectY(self.homeBtn), 75*AdaptationWidth(), 75*AdaptationWidth())];
+        [_cartBtn setImage:MImage(@"cart") forState:0];
+        _cartBtn.tag = CARTBTNTAG;
+        [_cartBtn addTarget:self action:@selector(respondsToRightDoubleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cartBtn;
+}
+
 @end
