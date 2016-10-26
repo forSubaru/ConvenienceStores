@@ -16,6 +16,4 @@
 /**价格*/
 @property (nonatomic,strong) RedPriceLabel *cellPrice;
 
-
-
 @end

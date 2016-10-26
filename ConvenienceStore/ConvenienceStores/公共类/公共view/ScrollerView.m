@@ -68,7 +68,9 @@
 //    self.leftImage.image = MImage(_imageNames.lastObject);
 //    self.centerImage.image = MImage(_imageNames[0]);
 //    self.rightImage.image = MImage(_imageNames[1]);
-    
+//    if (_imageNames.count==1) {
+//        return;
+//    }
     if ([self.imageNames[0] rangeOfString:@"http"].location != NSNotFound) {
         [self.leftImage setImageWithURL:[NSURL URLWithString:self.imageNames.lastObject] placeholder:MImage(@"icon_3")];
         
@@ -76,12 +78,12 @@
         
         [self.rightImage setImageWithURL:[NSURL URLWithString:self.imageNames[1]] placeholder:MImage(@"lunbo_bg")];
     }else{
+        
         self.leftImage.image = MImage(_imageNames.lastObject);
         self.centerImage.image = MImage(_imageNames[0]);
         self.rightImage.image = MImage(_imageNames[1]);
+        
     }
-    
-    
     
     self.pageContro.numberOfPages = _imageNames.count;
     

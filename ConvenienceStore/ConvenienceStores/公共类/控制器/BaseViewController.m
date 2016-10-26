@@ -10,6 +10,7 @@ enum{
 };
 #import "BaseViewController.h"
 #import "SearchGoodsViewController.h"
+#import "ScanViewController.h"
 //#import <IQKeyboardManager.h>
 @interface BaseViewController ()<SearchViewDelegate>
 {
@@ -156,6 +157,10 @@ enum{
             break;
     }
 }
+-(void)respondsToScanBtn{
+    UIViewController *scanVC = [[ScanViewController alloc] init];
+    [self.navigationController pushViewController:scanVC animated:YES];
+}
 #pragma mark *** getters ***
 
 -(UIView *)backView{
@@ -170,7 +175,7 @@ enum{
     if (!_scanBtn) {
         _scanBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [_scanBtn setImage:MImage(@"code") forState:UIControlStateNormal];
-        
+        [_scanBtn addTarget:self action:@selector(respondsToScanBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _scanBtn;
 }

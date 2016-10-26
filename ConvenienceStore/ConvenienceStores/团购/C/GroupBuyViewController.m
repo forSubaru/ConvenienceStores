@@ -90,13 +90,13 @@ static NSString *const kReusableCoelcCellIdentifier = @"kheacellIdentifier";
 }
 -(ScrollerView *)scroView{
     if (!_scroView) {
-        _scroView = [[ScrollerView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.headView), Screen_width, 300*AdaptationWidth()) images:[@[@"gundong",@"gundong2",@"gundong3"] mutableCopy]];
+        _scroView = [[ScrollerView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.headView), Screen_width, 300*AdaptationWidth()) images:[@[@"ad_image.jpg",@"ad_image2.jpg",@"ad_image3.jpg"] mutableCopy]];
     }
     return _scroView;
 }
 -(GroupVariouGoodsView *)variouView{
     if (!_variouView) {
-        _variouView = [[GroupVariouGoodsView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.scroView)+10, Screen_width, 560*AdaptationWidth()) imageArr:@[@"gundong",@"gundong2",@"gundong3",@"gundong",@"gundong2",@"gundong3",@"gundong"]];
+        _variouView = [[GroupVariouGoodsView alloc] initWithFrame:CGRectMake(0, CGRectYH(self.scroView)+10, Screen_width, 0*AdaptationWidth()) imageArr:@[@"ad_image.jpg",@"ad_image2.jpg",@"ad_image3.jpg",@"ad_image",@"ad_image2",@"ad_image3",@"ad_image"]];
     }
     return _variouView;
 }

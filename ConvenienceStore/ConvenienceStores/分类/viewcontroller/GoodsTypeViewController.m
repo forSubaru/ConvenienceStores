@@ -9,6 +9,7 @@
 #import "GoodsTypeViewController.h"
 #import "MaketOpenTimeView.h"
 #import "GoodsSelecView.h"
+
 @interface GoodsTypeViewController ()<GoodsSelecViewDelegate>
 /**营业时间*/
 @property (nonatomic,strong) MaketOpenTimeView *headTimeView;
@@ -32,6 +33,7 @@
 -(void)initUI{
     [self.view addSubview:self.headTimeView];
     [self.view addSubview:self.selecView];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -45,7 +47,6 @@
 -(MaketOpenTimeView *)headTimeView{
     if (!_headTimeView) {
         _headTimeView = [[MaketOpenTimeView alloc] initWithFrame:CGRectMake(0, 64, Screen_width, 50*AdaptationWidth())];
-        
         
     }
     return _headTimeView;

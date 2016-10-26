@@ -15,6 +15,8 @@
 #import "MineViewController.h"
 
 #import "LoginNormalViewController.h"
+#import "StartSeachShopView.h"
+#import "BaiduLocation.h"
 #define TabBarBtn_tag 10
 
 @interface RootViewController ()
@@ -24,20 +26,45 @@
     NSArray *_barSelectedImageArr;
 }
 
+/**检车附近view*/
+@property (nonatomic,strong) StartSeachShopView *starView;
+/**定位*/
+@property (nonatomic,strong) BaiduLocation *location;
+
 -(void)initTabBarItem;/*自定义标签栏item*/
 -(void)initData;/*初始化数据*/
+
 @end
 
 @implementation RootViewController
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    //检测周围是否有商店
+//     [self checkShop];
+    
     [self initData];
     [self configViewController];
+   
+
     [self initTabBarItem];
+    
+    //地图定位
+//    _location = [[BaiduLocation alloc] init];
+//    [_location startLocation];
+//    [_location stopLocation];
+  
+    
+}
+//检测附近有没有shop
+-(void)checkShop{
+    StartSeachShopView *startView = [[StartSeachShopView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:startView];
+    self.starView = startView;
 }
 
 -(void)initData{

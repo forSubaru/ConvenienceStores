@@ -38,8 +38,14 @@ static NSString *const kReusableCellIdentifier = @"joinuscellIdentifier";
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kReusableCellIdentifier];
     if (indexPath.row==0) {
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 3420*AdaptationWidth())];
-        imageV.image = MImage(@"myapply");
+        imageV.image = MImage(@"jiameng_image.jpg");
         [cell.contentView addSubview:imageV];
+        
+        //拨打电话按钮
+        UIButton *callBtn = [[UIButton alloc] initWithFrame:AdaptationFrame(142, 3315, Screen_width/AdaptationWidth()-284, 56)];
+        [callBtn addTarget:self action:@selector(respondsTocallBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:callBtn];
+        
         return cell;
     }else if (indexPath.row==6){
         UIButton *commitBtn = [[UIButton alloc] initWithFrame:AdaptationFrame(28, 67, 688, 64)];
@@ -49,6 +55,7 @@ static NSString *const kReusableCellIdentifier = @"joinuscellIdentifier";
         commitBtn.titleLabel.font = WFont(28);
         [cell addSubview:commitBtn];
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     NSArray *titleArr = @[@"姓名",@"手机",@"省",@"市",@"区/县"];
@@ -57,10 +64,18 @@ static NSString *const kReusableCellIdentifier = @"joinuscellIdentifier";
     if (indexPath.row>2) {
         jCell = [[JoinUsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kReusableCellIdentifier];
     }
-    jCell.cellName = titleArr[indexPath.row-1];
+    jCell.cellName.text = titleArr[indexPath.row-1];
     jCell.cellTextField.placeholder = holderArr[indexPath.row-1];
     return jCell;
 }
+#pragma mark *** events ***
+-(void)respondsTocallBtn:(UIButton *)sender{
+
+    NSURL *url = [NSURL URLWithString:@"telprompt://400-8201581"];
+                  
+     [[UIApplication sharedApplication] openURL:url];
+}
+#pragma mark *** delegate ***
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==0) {
         return 3420*AdaptationWidth();

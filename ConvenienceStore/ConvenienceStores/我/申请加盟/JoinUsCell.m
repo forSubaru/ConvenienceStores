@@ -24,7 +24,7 @@
 }
 -(UILabel *)cellName{
     if (!_cellName) {
-        _cellName = [[UILabel alloc] initWithFrame:AdaptationFrame(20, 0, 64, 77)];
+        _cellName = [[UILabel alloc] initWithFrame:AdaptationFrame(20, 0, 80, 77)];
         _cellName.text = @"姓名";
         _cellName.font = WFont(30);
         _cellName.textColor = [UIColor blackColor];

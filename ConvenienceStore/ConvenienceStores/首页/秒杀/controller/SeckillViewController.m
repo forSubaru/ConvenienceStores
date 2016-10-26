@@ -11,7 +11,7 @@ static NSString *const kReusableCellIdentifier = @"SecKillcellIdentifier";
 #import "SeckillViewController.h"
 #import "SeckillHeaderView.h"
 #import "SecKillTableViewCell.h"
-@interface SeckillViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SeckillViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>
 /**背景滚动图*/
 @property (nonatomic,strong) UIScrollView *backScroView;
 /**头部按钮*/
@@ -20,6 +20,7 @@ static NSString *const kReusableCellIdentifier = @"SecKillcellIdentifier";
 @property (nonatomic,strong) UITableView *tableView;
 /**data*/
 @property (nonatomic,strong) NSArray *dataSource;
+
 
 @end
 
@@ -38,11 +39,15 @@ static NSString *const kReusableCellIdentifier = @"SecKillcellIdentifier";
 -(void)initData{
     _dataSource = @[@"0.1",@"0.2",@"0.3",@"0.4",@"0.5",@"0.6"];
 }
+
 #pragma mark *** 初始化界面 ***
 -(void)initUI{
     [self.view addSubview:self.backScroView];
     [self.backScroView addSubview:self.headView];
     [self.backScroView addSubview:self.tableView];
+    //打开定位
+//    [self startLocation];
+ 
 }
 #pragma mark *** delegate ***
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -57,6 +62,8 @@ static NSString *const kReusableCellIdentifier = @"SecKillcellIdentifier";
     [cell addBarWithPercent:[_dataSource[indexPath.row] floatValue]];
     return cell;
 }
+
+
 #pragma mark *** getters ***
 -(UIScrollView *)backScroView{
     if (!_backScroView) {
@@ -88,4 +95,5 @@ static NSString *const kReusableCellIdentifier = @"SecKillcellIdentifier";
     }
     return _tableView;
 }
+
 @end

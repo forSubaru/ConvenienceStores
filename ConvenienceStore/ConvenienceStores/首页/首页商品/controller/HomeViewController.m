@@ -14,10 +14,12 @@
 #import "RootViewController.h"
 #import "ChargeViewController.h"
 #import "GetTicketViewController.h"
+
+
 @interface HomeViewController ()<FourButtonViewDelegate,HotCollectionViewDelegate,GroupBugViewDelegate>
+
 /**背景滚动图*/
 @property (nonatomic,strong) UIScrollView *backScroView;
-
 /**广告滚动图*/
 @property (nonatomic,strong) ScrollerView *homeScrollView;
 /**四个按钮*/
@@ -29,15 +31,23 @@
 /**查看更多商品按钮*/
 @property (nonatomic,strong) UIButton *moreGoodsBtn;
 
+
+
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     [self initData];
     [self initUI];
+    
+    
+
 }
+
 
 #pragma mark *** 初始化数据 ***
 -(void)initData{
@@ -111,7 +121,7 @@
 }
 -(ScrollerView *)homeScrollView{
     if (!_homeScrollView) {
-        _homeScrollView = [[ScrollerView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 300*AdaptationWidth()) images:[@[@"gundong",@"gundong2",@"gundong3",@"gundong4"] mutableCopy]];
+        _homeScrollView = [[ScrollerView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, 300*AdaptationWidth()) images:[@[@"ad_image.jpg",@"ad_image1.jpg",@"ad_image2.jpg",@"ad_image3.jpg"] mutableCopy]];
     }
     return _homeScrollView;
 }

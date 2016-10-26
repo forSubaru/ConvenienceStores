@@ -248,6 +248,7 @@ static NSString *const kReusableCellIdentifier = @"MineCellIdentifier";
         _tableView.dataSource = self;
         [_tableView registerClass:[MineCell class] forCellReuseIdentifier:@"celll"];
         _tableView.rowHeight = 86*AdaptationWidth();
+        _tableView.bounces = false;
     }
     return _tableView;
 }
